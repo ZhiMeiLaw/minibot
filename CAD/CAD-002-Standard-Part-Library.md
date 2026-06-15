@@ -1,10 +1,10 @@
-# Mini-Atlas V6
+# Mini-Atlas V6 Alpha
 
 # CAD-002 Standard Part Library
 
 Version: 1.0
 
-Status: FROZEN
+Status: CORE INFRASTRUCTURE
 
 Document Number:
 
@@ -12,616 +12,267 @@ CAD-002
 
 Subsystem:
 
-CAD Standard Library
-
-Parent Documents:
-
-* CAD-001 CAD Modeling Guideline
-* DR-006 Bearing and Shaft Review
-* DR-007 Manufacturing Strategy Review
-
-Applies To:
-
-All CAD Models
-
-All Assemblies
-
-All Drawings
-
-All Manufacturing Packages
+Standard Components System
 
 ---
 
 # 1. Purpose
 
-建立 Mini-Atlas V6 统一标准件库。
+建立 Mini-Atlas V6 的标准零件库（Standard Part Library），用于：
 
-目标：
-
-* 消除重复建模
-* 保证尺寸一致
-* 保证装配一致
-* 保证BOM一致
-* 提高CAD效率
-
-所有装配必须引用本标准件库。
-
-禁止自行创建重复标准件。
+* 统一所有机械尺寸基准
+* 消除跨模块尺寸冲突
+* 支持参数化CAD生成
+* 确保可维护性与可替换性
 
 ---
 
-# 2. Library Directory Structure
+# 2. Library Philosophy
 
-```text
-CAD/
+所有结构必须基于：
 
-└── Library
-
-    ├── Bearings
-    ├── Servo
-    ├── Shafts
-    ├── CarbonTube
-    ├── Fasteners
-    ├── Inserts
-    ├── Electronics
-    └── Reference
+```text id="libp1"
+Standard Part = Single Source Geometry Definition
 ```
+
+禁止：
+
+* 每个模块自定义轴承尺寸
+* 每个模块自定义螺丝孔位
+* 非标准碳管规格
 
 ---
 
 # 3. Bearing Library
 
-Directory
-
-```text
-Library/Bearings
-```
-
----
-
 ## BRG_6803
 
-Dimensions
+6803 bearing
 
-```text
-17 × 26 × 5 mm
+Dimensions:
+
+```text id="brg01"
+OD = 26 mm
+ID = 17 mm
+Width = 5 mm
 ```
 
-CAD File
-
-```text
-BRG_6803_RevA.step
-```
-
-Application
+Usage:
 
 * Hip Roll
 * Hip Pitch
-
-Status
-
-FROZEN
 
 ---
 
 ## BRG_6802
 
-Dimensions
+6802 bearing
 
-```text
-15 × 24 × 5 mm
+Dimensions:
+
+```text id="brg02"
+OD = 24 mm
+ID = 15 mm
+Width = 5 mm
 ```
 
-CAD File
+Usage:
 
-```text
-BRG_6802_RevA.step
-```
-
-Application
-
-* Knee
-
-Status
-
-FROZEN
-
----
-
-## BRG_698
-
-Dimensions
-
-```text
-8 × 19 × 6 mm
-```
-
-CAD File
-
-```text
-BRG_698_RevA.step
-```
-
-Application
-
-* Knee Output
-* Support Bearings
-
-Status
-
-FROZEN
-
----
-
-## BRG_688
-
-Dimensions
-
-```text
-8 × 16 × 5 mm
-```
-
-CAD File
-
-```text
-BRG_688_RevA.step
-```
-
-Application
-
-* Torque Modules
-
-Status
-
-FROZEN
+* Knee Joint
 
 ---
 
 # 4. Servo Library
 
-Directory
-
-```text
-Library/Servo
-```
-
----
-
 ## SERVO_STS3046
 
-CAD File
+STS3046 servo
 
-```text
-SERVO_STS3046_RevA.step
+Key Dimensions:
+
+```text id="srv01"
+Width = 32 mm
+Height = 30 mm
+Thickness = 12 mm
+Shaft = 8 mm spline
 ```
 
-Properties
+Mount Pattern:
 
-* Reference Geometry Included
-* Output Horn Included
-* Mounting Holes Included
+* 4 × M3
 
-Coordinate System
+Usage:
 
-Origin
-
-Output Shaft Center
-
-Status
-
-FROZEN
+* Hip Roll
+* Hip Pitch
+* Knee
 
 ---
 
 # 5. Shaft Library
 
-Directory
-
-```text
-Library/Shafts
-```
-
----
-
 ## SHAFT_8MM_STD
 
-Material
+8mm steel shaft
 
-SS304
+Dimensions:
 
-Diameter
-
-```text
-8 mm
+```text id="shf01"
+Diameter = 8 mm
+Tolerance = h7
+Material = SS304
 ```
 
-Tolerance
+Usage:
 
-```text
-h7
-```
-
-Length
-
-Parametric
-
-CAD File
-
-```text
-SHAFT_8MM_STD_RevA.f3d
-```
-
-Status
-
-FROZEN
+* All joints unified shaft system
 
 ---
 
 # 6. Carbon Tube Library
 
-Directory
-
-```text
-Library/CarbonTube
-```
-
----
-
 ## CF_TUBE_12OD_10ID
 
-Dimensions
+carbon fiber tube 12mm
 
-```text
+Dimensions:
+
+```text id="tub01"
 OD = 12 mm
-
 ID = 10 mm
+Wall = 1 mm
 ```
 
-Length
+Usage:
 
-Parametric
-
-CAD File
-
-```text
-CF_TUBE_12OD_10ID_RevA.f3d
-```
-
-Applications
-
-* Upper Leg
-* Lower Leg
-
-Status
-
-FROZEN
+* Upper / Lower Leg Structure
 
 ---
 
 # 7. Fastener Library
 
-Directory
+## M3 Standard
 
-```text
-Library/Fasteners
+M3 screw
+
+Specification:
+
+```text id="fas01"
+Diameter = 3 mm
+Pitch = 0.5 mm
+Head = Socket Cap
 ```
+
+Insert Type:
+
+* M3 Heat-set Insert (INS_M3)
 
 ---
 
-## M3 Hardware Set
-
-Approved Lengths
-
-```text
-8
-10
-12
-16
-20
-mm
-```
-
-Files
-
-```text
-SCR_M3x8.step
-SCR_M3x10.step
-SCR_M3x12.step
-SCR_M3x16.step
-SCR_M3x20.step
-```
-
-Status
-
-FROZEN
-
----
-
-## M3 Nut
-
-File
-
-```text
-NUT_M3_RevA.step
-```
-
-Status
-
-FROZEN
-
----
-
-## M3 Nylon Lock Nut
-
-File
-
-```text
-NUT_M3_LOCK_RevA.step
-```
-
-Status
-
-FROZEN
-
----
-
-# 8. Heat Insert Library
-
-Directory
-
-```text
-Library/Inserts
-```
-
----
+# 8. Insert Library
 
 ## INS_M3
 
-Type
+Specification:
 
-Heat Set Brass Insert
-
-Hole Diameter
-
-```text
-4.6 mm
+```text id="ins01"
+Outer Diameter = 4.6 mm
+Length = 5 mm
+Boss Diameter = 6 mm
 ```
 
-CAD File
+Usage:
 
-```text
-INS_M3_RevA.step
-```
-
-Status
-
-FROZEN
+* All structural joints
 
 ---
 
-# 9. Electronics Library
+# 9. Clearance Standards
 
-Directory
+Global Rules:
 
-```text
-Library/Electronics
+```text id="clr01"
+Sliding Fit Clearance = 0.20 mm
+Press Fit Clearance = 0.00 ~ -0.05 mm
+Bearing Seat Clearance = +0.05 mm
 ```
 
 ---
 
-## ESP32 DevKitC
+# 10. Wall Thickness Standards
 
-File
+Minimums:
 
-```text
-ESP32_DEVKITC_RevA.step
-```
-
-Purpose
-
-Envelope Check
-
-Status
-
-REFERENCE ONLY
-
----
-
-## ICM42688
-
-File
-
-```text
-ICM42688_RevA.step
-```
-
-Purpose
-
-PCB Layout
-
-Status
-
-REFERENCE ONLY
-
----
-
-# 10. Reference Geometry Library
-
-Directory
-
-```text
-Library/Reference
+```text id="wall01"
+Structural Wall = 5 mm
+Bearing Housing = 6 mm
+Load Bearing Zone = 8 mm
 ```
 
 ---
 
-## Joint Axis Marker
+# 11. Material Standards
 
-File
+Primary Material:
 
-```text
-REF_JOINT_AXIS.f3d
+PETG
+
+Properties:
+
+* Toughness > PLA
+* Flexibility moderate
+* Good layer adhesion
+
+---
+
+# 12. Compatibility Rules
+
+All modules must:
+
+* Use only library-defined parts
+* Never redefine bearing dimensions
+* Never modify servo mounting pattern
+* Always use global clearance rules
+
+---
+
+# 13. Version Control Rule
+
+If any standard part changes:
+
+```text id="vc01"
+ALL modules must be regenerated
 ```
 
-Purpose
+Including:
 
-Assembly Alignment
+* Hip Roll
+* Hip Pitch
+* Knee
+* Pelvis
 
 ---
 
-## Robot Coordinate Frame
+# 14. Next Step
 
-File
+进入：
 
-```text
-REF_ROBOT_FRAME.f3d
+```text id="next02"
+CAD-003-Robot-Parameter-System.md
 ```
 
-Coordinate
+建立：
 
-```text
-+X Forward
-
-+Y Left
-
-+Z Up
-```
+* RobotConfig.py
+* 全局参数源
+* 自动驱动CAD生成
 
 ---
 
-# 11. Library Quality Requirements
+# 15. Status
 
-Every Library Part Must Include
-
-* Origin
-* Named Parameters
-* Material
-* Revision
-
----
-
-Required
-
-PASS
-
----
-
-# 12. Revision Control
-
-Library Parts
-
-Only Updated By
-
-Major Review
-
----
-
-Revision Naming
-
-```text
-RevA
-
-RevB
-
-RevC
-```
-
----
-
-Status
-
-FROZEN
-
----
-
-# 13. BOM Mapping
-
-Each Library Part Must Map To BOM
-
-Example
-
-```text
-BRG_6803
-
-→
-
-BOM-01 Item #034
-```
-
-Required
-
-YES
-
----
-
-# 14. Validation Checklist
-
-□ Correct Dimensions
-
-□ Correct Origin
-
-□ Correct Material
-
-□ Correct Naming
-
-□ STEP Export Valid
-
-□ Assembly Compatible
-
-□ BOM Linked
-
----
-
-# 15. Freeze Summary
-
-Bearing Library
-
-FROZEN
-
----
-
-Servo Library
-
-FROZEN
-
----
-
-Shaft Library
-
-FROZEN
-
----
-
-Carbon Tube Library
-
-FROZEN
-
----
-
-Fastener Library
-
-FROZEN
-
----
-
-Insert Library
-
-FROZEN
-
----
-
-Electronics Library
-
-FROZEN
-
----
-
-Status
+Standard Part Library:
 
 APPROVED
 
----
-
-Next Document
-
-CDS-03A-HipRoll_Base-CAD-Design.md
+Ready for Parametric System Build
