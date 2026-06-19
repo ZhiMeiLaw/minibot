@@ -4,7 +4,9 @@
 
 Version: 1.0 Freeze A
 
-Status: APPROVED AFTER VALIDATION
+Status: DRAFT
+
+> **⚠️ 注意**：本文档所有实测字段（"_____ A"）均为空白。这是工程样机**尚未制造**的占位文档。状态必须为 DRAFT，不得标记为 APPROVED。原 APPROVED AFTER VALIDATION 状态撤销，待样机完成后填充真实数据再重新审核。
 
 Document Number:
 
