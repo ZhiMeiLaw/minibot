@@ -60,7 +60,7 @@ Related Documents:
 
 * Axis: lateral rotation
 * Output: 8mm shaft
-* Bearing: 6803 ×2
+* Bearing: 688-2RS ×2
 * Torque: STS3046
 * Carbon Tube Clamp: fixed at output
 
@@ -68,9 +68,11 @@ Related Documents:
 
 * Axis: sagittal rotation
 * Output: 8mm shaft
-* Bearing: 6803 ×2
+* Bearing: 698-2RS ×2
 * Torque: STS3046
 * Carbon Tube Clamp: fixed at output
+
+> **ECO-001 变更**：轴承由 6803 更新为 688-2RS（Hip Roll）/698-2RS（Hip Pitch），轴由 Ø17 更新为 Ø8 GCr15。
 
 ---
 

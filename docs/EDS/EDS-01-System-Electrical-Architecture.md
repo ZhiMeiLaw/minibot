@@ -115,11 +115,12 @@ V6 Alpha 的设计目标：
 
      │            │            │
 
- STS3046       ESP32       GB37-520
+STS3046       ESP32       GB37-520
 
- STS3215       IMU         Driver
-
+  IMU           Driver
 ```
+
+> **ECO-001 变更**：踝关节已移除（DR-011），原 STS3215 电气架构取消。
 
 ---
 
@@ -155,9 +156,9 @@ V6 Alpha 的设计目标：
 
 ```text
 STS3046
-
-STS3215
 ```
+
+> **ECO-001 变更**：踝关节取消，仅保留 6 × STS3046。
 
 ---
 
@@ -335,7 +336,8 @@ Pelvis Center
 | Hip Roll | STS3046 |
 | Hip Pitch | STS3046 |
 | Knee | STS3046 |
-| Ankle | STS3215 |
+
+> **ECO-001 变更**：踝关节已移除（DR-011），Ankle 行取消。
 
 ---
 
@@ -344,7 +346,8 @@ Pelvis Center
 | Servo | Qty |
 |---------|---------:|
 | STS3046 | 6 |
-| STS3215 | 2 |
+
+> **ECO-001 变更**：踝关节取消，仅 6 × STS3046。
 
 ---
 
@@ -445,7 +448,7 @@ PWM
 驱动器：
 
 ```text
-TB6612FNG
+DRV8871
 ```
 
 ---
@@ -786,9 +789,13 @@ ROS2 Bridge
 | Controller | ESP32 DevKitC-32E | 1 |
 | IMU | ICM42688-P | 1 |
 | STS3046 | Servo | 6 |
-| STS3215 | Servo | 2 |
 | Wheel Motor | GB37-520 | 2 |
-| Motor Driver | TB6612FNG | 1 |
+| Motor Driver | DRV8871 | 1 |
+| Battery | Samsung 30Q | 6 |
+| XT30 | Amass XT30U | 2 |
+| Fuse | 20A ATO | 1 |
+
+> **ECO-001 变更**：踝关节取消，移除 STS3215；轮驱 IC 统一为 DRV8871。
 | Battery | Samsung 30Q | 6 |
 | XT30 | Amass XT30U | 2 |
 | Fuse | 20A ATO | 1 |
@@ -826,7 +833,7 @@ UART
 ## Wheel Driver
 
 ```text
-TB6612FNG
+DRV8871
 ```
 
 ---

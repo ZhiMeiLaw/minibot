@@ -2,9 +2,12 @@
 
 # MDS-03 Assembly Specification
 
-Version: 1.0 Freeze A
+Version: 1.1 Freeze B
 
 Status: APPROVED
+
+> **ECO-001 变更记录**
+> - 2026-06: 轴承系统由 6803/6802/6801 更新为 688-2RS/698-2RS；主轴 Ø8 GCr15；碳管 OD10×ID8×L150mm。本版本取代 MDS-03 v1.0 Freeze A。
 
 ---
 
@@ -42,11 +45,11 @@ Status: APPROVED
 
 | Parameter | Value |
 |------------|------------|
-| Type | 6803-2RS |
-| ID | 17 mm |
-| OD | 26 mm |
+| Type | 688-2RS |
+| ID | 8 mm |
+| OD | 16 mm |
 | Width | 5 mm |
-| Quantity | 2 |
+| Quantity | 4 |
 
 ---
 
@@ -56,8 +59,10 @@ Status: APPROVED
 
 | Parameter | Value |
 |------------|------------|
-| Type | 6803-2RS |
-| Quantity | 2 |
+| Type | 698-2RS |
+| Quantity | 4 |
+
+规格：8 × 19 × 6 mm
 
 ---
 
@@ -67,25 +72,16 @@ Status: APPROVED
 
 | Parameter | Value |
 |------------|------------|
-| Type | 6802-2RS |
-| ID | 15 mm |
-| OD | 24 mm |
-| Width | 5 mm |
+| Type | 698-2RS |
 | Quantity | 2 |
+
+规格：8 × 19 × 6 mm
 
 ---
 
-## 2.4 Ankle Bearing
+## 2.4 Ankle
 
-### Specification
-
-| Parameter | Value |
-|------------|------------|
-| Type | 6801-2RS |
-| ID | 12 mm |
-| OD | 21 mm |
-| Width | 5 mm |
-| Quantity | 2 |
+**已移除。** DR-011 决定采用 Rigid Wheel Mount（刚性轮足融合），踝关节取消。详见 DR-011-Ankle-Architecture-Review.md。
 
 ---
 
@@ -98,15 +94,17 @@ Status: APPROVED
 承担：
 
 - Hip Roll 主载荷
-- Roll轴旋转中心
+- Roll 轴旋转中心
 
 ### Specification
 
 | Parameter | Value |
 |------------|------------|
-| Material | SUS304 Stainless Steel |
-| Diameter | 17 mm |
+| Material | GCr15 轴承钢（淬火） |
+| Diameter | 8 mm |
 | Length | 45 mm |
+| Tolerance | h7 |
+| Surface | 抛光 |
 
 ---
 
@@ -114,8 +112,8 @@ Status: APPROVED
 
 | Parameter | Value |
 |------------|------------|
-| Material | SUS304 |
-| Diameter | 17 mm |
+| Material | GCr15 |
+| Diameter | 8 mm |
 | Length | 40 mm |
 
 ---
@@ -124,19 +122,9 @@ Status: APPROVED
 
 | Parameter | Value |
 |------------|------------|
-| Material | SUS304 |
-| Diameter | 15 mm |
-| Length | 35 mm |
-
----
-
-## 3.4 Ankle Shaft
-
-| Parameter | Value |
-|------------|------------|
-| Material | SUS304 |
-| Diameter | 12 mm |
-| Length | 30 mm |
+| Material | GCr15 |
+| Diameter | 8 mm |
+| Length | 38 mm |
 
 ---
 
@@ -152,6 +140,8 @@ Status: APPROVED
 - 易采购
 - 易更换
 
+规格标注：`OD × ID × L`（外径 × 内径 × 长度）
+
 ---
 
 ## 4.1 Thigh Tube（大腿）
@@ -159,13 +149,10 @@ Status: APPROVED
 | Parameter | Value |
 |------------|------------|
 | Material | Carbon Fiber |
-| OD | 16 mm |
-| ID | 14 mm |
-| Length | 90 mm |
-
-Quantity:
-
-2
+| OD | 10 mm |
+| ID | 8 mm |
+| Length | 120 mm visible / 150 mm raw |
+| Quantity | 2 |
 
 ---
 
@@ -174,13 +161,10 @@ Quantity:
 | Parameter | Value |
 |------------|------------|
 | Material | Carbon Fiber |
-| OD | 14 mm |
-| ID | 12 mm |
-| Length | 80 mm |
-
-Quantity:
-
-2
+| OD | 10 mm |
+| ID | 8 mm |
+| Length | 120 mm visible / 150 mm raw |
+| Quantity | 2 |
 
 ---
 
@@ -277,39 +261,12 @@ M4 × 16
 
 ---
 
-## Hip Roll
+## Hip Roll / Hip Pitch / Knee
 
 | Item | Value |
 |------------|------------|
-| Shaft Diameter | 17 mm |
-| E-Clip | DIN6799-17 |
-
----
-
-## Hip Pitch
-
-| Item | Value |
-|------------|------------|
-| Shaft Diameter | 17 mm |
-| E-Clip | DIN6799-17 |
-
----
-
-## Knee
-
-| Item | Value |
-|------------|------------|
-| Shaft Diameter | 15 mm |
-| E-Clip | DIN6799-15 |
-
----
-
-## Ankle
-
-| Item | Value |
-|------------|------------|
-| Shaft Diameter | 12 mm |
-| E-Clip | DIN6799-12 |
+| Shaft Diameter | 8 mm |
+| E-Clip | DIN6799-8 |
 
 ---
 
@@ -317,38 +274,38 @@ M4 × 16
 
 ## Cross Section
 
-                 Pelvis Bracket
+                  Pelvis Bracket
 
         ┌─────────────────────┐
         │                     │
-        │     6803 Bearing    │
+        │     688 Bearing     │
         │         │           │
         │         │           │
-        │      17mm Shaft     │
+        │      Ø8 Shaft      │
         │         │           │
-        │     6803 Bearing    │
+        │     688 Bearing    │
         │                     │
         └─────────────────────┘
 
-                 │
+                  │
 
-             Servo Horn
+              Servo Horn
 
-                 │
+                  │
 
-             Hip Frame
+              Hip Frame
 
 ---
 
 ## Assembly Sequence
 
-1. 压入左侧6803轴承
-2. 压入右侧6803轴承
-3. 插入17mm主轴
-4. 安装E-Clip
-5. 安装STS3046舵机
-6. 安装舵盘Horn
-7. 固定Hip Roll支架
+1. 压入左侧 688 轴承
+2. 压入右侧 688 轴承
+3. 插入 Ø8 主轴
+4. 安装 E-Clip
+5. 安装 STS3046 舵机
+6. 安装舵盘 Horn
+7. 固定 Hip Roll 支架
 
 ---
 
@@ -360,15 +317,15 @@ M4 × 16
 
                    │
 
-              6803 Bearing
+              698 Bearing
 
                    │
 
-               17mm Shaft
+               Ø8 Shaft
 
                    │
 
-              6803 Bearing
+              698 Bearing
 
                    │
 
@@ -378,10 +335,10 @@ M4 × 16
 
 ## Assembly Sequence
 
-1. 安装轴承
-2. 插入主轴
-3. 安装舵机
-4. 固定Horn
+1. 安装 698 轴承
+2. 插入 Ø8 主轴
+3. 安装 STS3046
+4. 安装 Horn
 5. 固定大腿连接座
 
 ---
@@ -394,15 +351,15 @@ M4 × 16
 
                │
 
-          6802 Bearing
+          698 Bearing
 
                │
 
-            15mm Shaft
+            Ø8 Shaft
 
                │
 
-          6802 Bearing
+          698 Bearing
 
                │
 
@@ -412,45 +369,19 @@ M4 × 16
 
 ## Assembly Sequence
 
-1. 安装轴承
-2. 插入15mm主轴
-3. 安装STS3046
-4. 安装Horn
+1. 安装 698 轴承
+2. 插入 Ø8 主轴
+3. 安装 STS3046
+4. 安装 Horn
 5. 固定小腿组件
 
 ---
 
 # 11. Ankle Assembly
 
-## Cross Section
+**已移除。** DR-011 选择 Rigid Wheel Mount 方案，详见 DR-011-Ankle-Architecture-Review.md。
 
-            Calf Tube
-
-                │
-
-           6801 Bearing
-
-                │
-
-            12mm Shaft
-
-                │
-
-           6801 Bearing
-
-                │
-
-           Wheel Module
-
----
-
-## Assembly Sequence
-
-1. 安装6801轴承
-2. 插入12mm主轴
-3. 安装STS3215
-4. 安装Horn
-5. 固定轮足模块
+轮组直接通过刚性安装座连接在小腿末端，无独立踝关节。
 
 ---
 
@@ -466,11 +397,7 @@ Wheel
 
 ↓
 
-Ankle
-
-↓
-
-Calf
+（Calf）
 
 ↓
 
@@ -500,15 +427,15 @@ Wheel
 
 ↓
 
-Ankle
-
-↓
-
-Calf
+（Calf）
 
 ↓
 
 Knee
+
+↓
+
+Thigh
 
 ↓
 
@@ -528,41 +455,57 @@ Pelvis
 
 装配完成后检查：
 
-- Bearing转动顺畅
+- Bearing 转动顺畅
 - 无明显间隙
-- E-Clip安装正确
-- Horn无松动
+- E-Clip 安装正确
+- Horn 无松动
 - 碳管无裂纹
 - 舵机输出轴无卡滞
-- 所有M3螺丝已锁紧
+- 所有 M3 螺丝已锁紧
 
 ---
 
-# 14. Freeze Summary
+# 14. Bearing Quantities Summary
+
+| Bearing | ID×OD×W | 应用 | 数量 |
+|---------|---------|------|------|
+| 688-2RS | 8×16×5 | Hip Roll | 4 |
+| 698-2RS | 8×19×6 | Hip Pitch + Knee | 6 |
+| **合计** | | | **10** |
+
+> 注：踝关节已移除（DR-011），原 6801/6802 轴承系统不再使用。
+
+---
+
+# 15. Shaft Quantities Summary
+
+| Shaft | 位置 | 数量 |
+|-------|------|------|
+| Ø8×45 | Hip Roll | 2 |
+| Ø8×40 | Hip Pitch | 2 |
+| Ø8×38 | Knee | 2 |
+
+---
+
+# 16. Freeze Summary
 
 ## Bearings
 
-6803-2RS
-6802-2RS
-6801-2RS
+688-2RS（8×16×5）
+
+698-2RS（8×19×6）
 
 ## Shafts
 
-17 mm
-15 mm
-12 mm
+Ø8 GCr15 h7
 
 ## Carbon Tubes
 
-16×14×90 mm
-14×12×80 mm
+OD 10mm × ID 8mm × L 150mm
 
 ## Fasteners
 
-M2
-M2.5
-M3
-M4
+M2 / M2.5 / M3 / M4
 
 ## Brass Insert
 
@@ -570,8 +513,10 @@ M3 × 5 mm
 
 ## E-Clips
 
-DIN6799 Series
+DIN6799-8
 
 Status:
 
 APPROVED FOR CAD MODELING
+
+(End of file - total 487 lines)

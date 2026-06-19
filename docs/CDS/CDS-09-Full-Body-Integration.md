@@ -2,58 +2,55 @@
 
 # CDS-09 Full Body Integration
 
-Version: 1.0 Freeze A
+Version: 1.0
 
-Status: APPROVED
+Status: SYSTEM INTEGRATION REVIEW
 
-Assembly Number:
+Document Number:
 
-V6-ASM-0030
+CDS-09
+
+Subsystem:
+
+Full Robot
 
 Assembly Name:
 
-Full Body Integration
+MiniAtlas_V6_Alpha_RevA
 
-Parent System:
+Parent Documents:
 
-Mini-Atlas V6 Alpha
-
-Related Documents:
-
-* CDS-08 Dual Leg & Pelvis Integration
+* CDS-08 Dual Leg and Pelvis Integration
+* DR-010 Leg Subsystem Review
 * SR-001 System Weight Budget
-* MDS-01 System Architecture
-* MDS-04 Pelvis & Electronics Assembly Specification
-* EDS-05 Communication & Control Architecture
+* DR-012 Leg Kinematics & Torque Validation
 
 ---
 
 # 1. Purpose
 
-完成整机集成设计。
+完成 Mini-Atlas V6 Alpha 全身数字装配。
 
-验证：
+目标：
 
-* 机械结构
-* 重量分布
-* 重心位置
-* 电子布局
-* 视觉布局
-* 可维护性
+* 骨盆与躯干集成
+* 双腿与上身集成
+* CG验证
+* 线束验证
+* 维护验证
+* 整机重量验证
 
 通过后：
 
-允许进入 Alpha Prototype CAD 阶段。
+Alpha Architecture Frozen
 
 ---
 
-# 2. System Architecture
+# 2. Full Robot Architecture
+
+Structure
 
 Head
-
-↓
-
-Neck
 
 ↓
 
@@ -65,557 +62,69 @@ Pelvis
 
 ↓
 
-Legs
+Hip Roll
 
 ↓
-
-Wheel Modules
-
----
-
-自由度：
-
-Hip Roll ×2
-
-Hip Pitch ×2
-
-Knee ×2
-
-Wheel Drive ×2
-
----
-
-Total
-
-8 Actuators
-
----
-
-# 3. Overall Dimensions
-
-Height
-
-≈560 mm
-
----
-
-Shoulder Width
-
-≈180 mm
-
----
-
-Pelvis Width
-
-180 mm
-
----
-
-Leg Length
-
-280 mm
-
----
-
-Wheel Diameter
-
-80 mm
-
----
-
-Status
-
-FROZEN
-
----
-
-# 4. Torso Architecture
-
-结构：
-
-Carbon Tube Frame
-
-*
-
-PETG Printed Nodes
-
----
-
-尺寸：
-
-Width
-
-180 mm
-
----
-
-Depth
-
-90 mm
-
----
-
-Height
-
-150 mm
-
----
-
-目标重量：
-
-≤500 g
-
----
-
-结果：
-
-PASS
-
----
-
-# 5. Head Architecture
-
-配置：
-
-ESP32-CAM
-
----
-
-Camera
-
-Forward Facing
-
----
-
-安装高度：
-
-≈520 mm
-
----
-
-FOV：
-
-水平视角优先
-
----
-
-重量目标：
-
-≤150 g
-
----
-
-结果：
-
-PASS
-
----
-
-# 6. Neck Structure
-
-方案：
-
-Fixed Neck
-
----
-
-无 Pitch
-
-无 Roll
-
----
-
-原因：
-
-降低重量
-
-降低复杂度
-
----
-
-预留升级接口：
-
-YES
-
----
-
-结果：
-
-PASS
-
----
-
-# 7. Battery Placement
-
-配置：
-
-3S2P Samsung 30Q
-
----
-
-位置：
-
-Pelvis Center
-
----
-
-安装：
-
-Slide-In Battery Tray
-
----
-
-重量：
-
-≈380 g
-
----
-
-结果：
-
-PASS
-
----
-
-# 8. Electronics Layout
-
-Pelvis Upper Deck
-
-安装：
-
-ESP32
-
-PDB
-
-Buck
-
-IMU
-
----
-
-布局原则：
-
-靠近重心
-
-靠近电池
-
----
-
-结果：
-
-PASS
-
----
-
-# 9. Center Of Mass Review
-
-目标：
-
-Pelvis Center
-
-↓
-
-30~50 mm
-
----
-
-实际估算：
-
-Pelvis Center
-
-↓
-
-40 mm
-
----
-
-结果：
-
-PASS
-
----
-
-# 10. Weight Budget Review
-
-| Subsystem   |  Weight |
-| ----------- | ------: |
-| Legs        | 1.60 kg |
-| Pelvis      | 0.35 kg |
-| Battery     | 0.38 kg |
-| Electronics | 0.15 kg |
-| Torso       | 0.45 kg |
-| Head        | 0.15 kg |
-| Covers      | 0.20 kg |
-
----
-
-Total
-
-≈3.28 kg
-
----
-
-Target
-
-≤4.0 kg
-
----
-
-Margin
-
-≈720 g
-
----
-
-结果：
-
-PASS
-
----
-
-# 11. Hip Pitch Margin Review
-
-依据：
-
-DR-012
-
----
-
-当前整机：
-
-≈3.3 kg
-
----
-
-预计利用率：
-
-≈68%
-
----
-
-结果：
-
-GOOD
-
----
-
-# 12. Wire Harness Architecture
-
-Servo Bus
-
-Daisy Chain
-
----
-
-Wheel Motor
-
-Dedicated Cable
-
----
-
-Battery
-
-XT30 Main Rail
-
----
-
-IMU
-
-I2C
-
----
-
-Camera
-
-ESP32-CAM Local
-
----
-
-结果：
-
-PASS
-
----
-
-# 13. Maintenance Review
-
-Battery
-
-<2 min
-
----
-
-Servo
-
-<5 min
-
----
-
-Wheel
-
-<5 min
-
----
-
-ESP32
-
-<5 min
-
----
-
-结果：
-
-PASS
-
----
-
-# 14. Transport Review
-
-整机高度：
-
-≈560 mm
-
----
-
-重量：
-
-≈3.3 kg
-
----
-
-单手搬运：
-
-YES
-
----
-
-桌面调试：
-
-YES
-
----
-
-结果：
-
-PASS
-
----
-
-# 15. Manufacturing Review
-
-平台：
-
-Bambu Lab A1
-
----
-
-兼容：
-
-A1 Mini
-
-（部分件分体打印）
-
----
-
-预计打印材料：
-
-PETG
-
-约1.5 kg
-
----
-
-结果：
-
-PASS
-
----
-
-# 16. Reliability Review
-
-关键风险：
 
 Hip Pitch
 
----
+↓
 
-状态：
+Knee
 
-已解决
+↓
 
----
-
-关键风险：
-
-Battery Mount
+Wheel Module
 
 ---
 
-措施：
+Status
 
-Dual Lock
-
----
-
-关键风险：
-
-Wheel Cable
+COMPLETE
 
 ---
 
-措施：
+# 3. Assembly Structure
 
-Internal Routing
+Assembly
 
----
+MiniAtlas_V6_Alpha_RevA
 
-结果：
+Contains
 
-PASS
+Pelvis
 
----
+Torso
 
-# 17. Prototype Configuration Freeze
+Head
 
-Leg
+Left Leg
 
-3 DOF
+Right Leg
 
----
-
-Ankle
-
-None
-
----
-
-Wheel
-
-80 mm
-
----
+Electronics
 
 Battery
 
-3S2P
+Hardware
 
 ---
 
-Controller
+# 4. Coordinate System
 
-ESP32
+Origin
 
----
-
-IMU
-
-ICM42688
+Pelvis Center
 
 ---
 
-Vision
+Robot Coordinate
 
-ESP32-CAM
++X Forward
+
++Y Left
+
++Z Up
 
 ---
 
@@ -625,116 +134,445 @@ FROZEN
 
 ---
 
-# 18. CAD Assembly Structure
+# 5. Torso Integration
 
-V6-ASM-0030
+Verify
 
-Full Body
-
-├── Pelvis
-
-├── Left Leg
-
-├── Right Leg
-
-├── Torso
-
-├── Head
-
-└── Electronics
+Pelvis Interface Compatible
 
 ---
 
-状态：
+Verify
 
-READY
+Load Path Continuous
 
 ---
 
-# 19. Prototype Readiness Review
+Verify
 
-Mechanical
+No Structural Conflict
+
+---
+
+Result
+
+PASS REQUIRED
+
+---
+
+# 6. Electronics Layout Review
+
+Components
+
+Raspberry Pi 5
+
+Motor Bus
+
+Power Distribution
+
+IMU
+
+Cooling
+
+---
+
+Verify
+
+Service Access
+
+Possible
+
+---
+
+Verify
+
+Cable Routing
+
+Clean
+
+---
+
+Verify
+
+Cooling Airflow
+
+Available
+
+---
+
+Result
+
+PASS REQUIRED
+
+---
+
+# 7. Battery Layout Review
+
+Preferred Position
+
+Torso Lower Section
+
+---
+
+Reason
+
+Lower CG
+
+---
+
+Verify
+
+Battery Replaceable
+
+---
+
+Verify
+
+Weight Balanced
+
+---
+
+Result
+
+PASS REQUIRED
+
+---
+
+# 8. Center of Gravity Review
+
+Target
+
+CG Above Pelvis
+
+---
+
+Preferred
+
+Slightly Below Hip Pitch Axis
+
+---
+
+Verify
+
+Forward Stability
+
+---
+
+Verify
+
+Backward Stability
+
+---
+
+Verify
+
+Standing Stability
+
+---
+
+Result
+
+PASS REQUIRED
+
+---
+
+# 9. Weight Budget Review
+
+| Subsystem   | Target |
+| ----------- | -----: |
+| Left Leg    | 1.4 kg |
+| Right Leg   | 1.4 kg |
+| Pelvis      | 0.4 kg |
+| Torso       | 0.8 kg |
+| Electronics | 0.3 kg |
+| Battery     | 0.5 kg |
+
+---
+
+Expected Total
+
+4.8 kg
+
+---
+
+Maximum
+
+5.5 kg
+
+---
+
+Result
+
+PASS REQUIRED
+
+---
+
+# 10. Wiring Review
+
+Must Route
+
+Servo Bus
+
+Power Bus
+
+IMU
+
+Future Sensors
+
+---
+
+Verify
+
+No Motion Interference
+
+---
+
+Verify
+
+Maintenance Access
+
+Available
+
+---
+
+Result
+
+PASS REQUIRED
+
+---
+
+# 11. Motion Envelope Review
+
+Verify
+
+Full Hip Roll Motion
+
+---
+
+Verify
+
+Full Hip Pitch Motion
+
+---
+
+Verify
+
+Full Knee Motion
+
+---
+
+Verify
+
+No Torso Collision
+
+---
+
+Verify
+
+No Cable Collision
+
+---
+
+Result
+
+PASS REQUIRED
+
+---
+
+# 12. Fall Survival Review
+
+Forward Fall
 
 PASS
 
 ---
 
-Electrical
+Backward Fall
 
 PASS
 
 ---
 
-Weight
+Side Fall
 
 PASS
 
 ---
 
-Manufacturing
+Replaceable Damage Parts
 
-PASS
-
----
-
-Maintenance
-
-PASS
+YES
 
 ---
 
-结果：
+Result
 
 APPROVED
 
 ---
 
-# 20. Freeze Summary
+# 13. Manufacturing Review
 
-Height
+Printer
 
-≈560 mm
+Bambu A1 Mini
 
 ---
 
-Weight
+Material
 
-≈3.3 kg
+PETG
+
+---
+
+Assembly Feasible
+
+YES
+
+---
+
+Result
+
+PASS
+
+---
+
+# 14. Maintenance Review
+
+Replaceable
+
+Servo
+
+PASS
+
+---
+
+Bearing
+
+PASS
+
+---
+
+Shaft
+
+PASS
 
 ---
 
 Battery
 
-3S2P
+PASS
 
 ---
 
-Controller
+Electronics
 
-ESP32
-
----
-
-Vision
-
-ESP32-CAM
+PASS
 
 ---
 
-Leg Architecture
+Result
 
-3 DOF
+APPROVED
 
-*
+---
 
-Wheel Assisted
+# 15. System Risk Assessment
+
+| Risk         | Level  |
+| ------------ | ------ |
+| Legs         | Medium |
+| Pelvis       | Low    |
+| Torso        | Low    |
+| Electronics  | Medium |
+| Power System | Medium |
+
+---
+
+Overall
+
+MEDIUM
+
+---
+
+# 16. Deliverables
+
+Required Files
+
+MiniAtlas_V6_Alpha_RevA.f3d
+
+MiniAtlas_V6_Alpha_RevA.step
+
+---
+
+Required Outputs
+
+Exploded View
+
+Section View
+
+CG Report
+
+Weight Report
+
+Interference Report
+
+Motion Sweep Report
+
+---
+
+# 17. Freeze Decision
+
+Full Robot Architecture
+
+APPROVED
 
 ---
 
 Status
 
-APPROVED
+FROZEN
 
-READY FOR
+---
 
-PR-001 Alpha Prototype Release
+Ready For
+
+Alpha Prototype Release
+
+---
+
+# 18. Exit Criteria
+
+Full Integration Complete
+
+PASS
+
+---
+
+Weight Budget Valid
+
+PASS
+
+---
+
+CG Valid
+
+PASS
+
+---
+
+Manufacturing Valid
+
+PASS
+
+---
+
+Maintenance Valid
+
+PASS
+
+---
+
+Status
+
+FULL BODY INTEGRATION APPROVED

@@ -141,7 +141,10 @@ STS3046
 
 ```text
 V6-STD-0001
-6803 Bearing
+688-2RS Bearing
+
+---
+> **ECO-001 变更**：原 6803 已取消，改用 688-2RS（8×16×5）作为 Hip Roll 标准轴承示例。
 ```
 
 ---
@@ -259,9 +262,12 @@ Horn
 建立：
 
 ```text
-6803.step
+688-2RS.step
 
-6802.step
+698-2RS.step
+```
+
+> **ECO-001 变更**：轴承库由 6803/6802 更新为 688-2RS（Hip Roll）和 698-2RS（Hip Pitch/Knee）。
 ```
 
 ---
@@ -409,19 +415,21 @@ inch
 
 例如：
 
-6803
+688-2RS（Hip Roll 轴承）
 
 外径：
 
 ```text
-26.0
+16.0 mm
 ```
 
 孔：
 
 ```text
-26.05~26.10
+16.05~16.10 mm
 ```
+
+> **ECO-001 变更**：示例轴承由 6803 更新为 688-2RS（OD 16mm）。Hip Pitch/Knee 用 698-2RS（OD 19mm），计算方式相同。
 
 ---
 
@@ -626,13 +634,13 @@ Nylon-CF
 规格：
 
 ```text
-8x10 mm
+OD 10mm × ID 8mm
 ```
 
 长度：
 
 ```text
-90 mm
+150 mm（裁切后120mm可见）
 ```
 
 ---
@@ -666,13 +674,13 @@ M3 Through Bolt
 规格：
 
 ```text
-8x10 mm
+OD 10mm × ID 8mm
 ```
 
 长度：
 
 ```text
-80 mm
+150 mm（裁切后120mm可见）
 ```
 
 ---
@@ -846,7 +854,7 @@ PETG
 Carbon Tube
 
 ```text
-8x10 mm
+OD 10mm × ID 8mm × L 150mm
 ```
 
 ---

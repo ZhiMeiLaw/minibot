@@ -218,10 +218,9 @@ Hip Pitch Axis
 
 ```text
 Hip Roll Axis
-下方15 mm
 ```
-
----
+外侧 35mm
+> 与 DR-012 Section 2 保持一致（"Hip Pitch Offset: 35mm"）。
 
 示意：
 
@@ -229,19 +228,13 @@ Hip Roll Axis
 
 Hip Roll Axis
 
-      O
+   O─────────────────── 35mm ─────────────────── O
 
-      │
-
-   15 mm
-
-      │
-
-      O
-
-Hip Pitch Axis
+   Hip Pitch Axis
 
 ```
+
+> **注意**：本参数与 DR-012 冻结值一致。原来 v1.0 中的"下方15mm"描述有误，已修正为 DR-012 的 35mm 偏移值。
 
 ---
 
@@ -832,10 +825,10 @@ Joint Shaft:
 Axis Offset:
 
 ```text
-15 mm
+35 mm
 ```
 
----
+> 与 DR-012 Section 2 一致。v1.0 中的 15mm 已修正。
 
 Weight:
 

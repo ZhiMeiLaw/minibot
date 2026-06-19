@@ -86,7 +86,7 @@ Z+ Up
 
 # 5. Interface to Lower Leg
 
-* Lower Leg Carbon Tube 8×10 mm
+* Lower Leg Carbon Tube OD 10mm × ID 8mm
 * Mount Plate：Rigid Adapter Plate
 * 4 × M3 螺丝固定
 * 插拔兼容性：可快速拆卸维护

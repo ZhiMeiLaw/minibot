@@ -360,7 +360,7 @@ Upper Leg
 
 120 mm ×4
 
-8×10 mm Carbon Tube
+OD 10mm × ID 8mm Carbon Tube
 
 ---
 
@@ -368,7 +368,7 @@ Lower Leg
 
 120 mm ×4
 
-8×10 mm Carbon Tube
+OD 10mm × ID 8mm Carbon Tube
 
 ---
 

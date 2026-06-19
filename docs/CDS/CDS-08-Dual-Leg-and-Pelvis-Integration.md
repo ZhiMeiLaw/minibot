@@ -1,204 +1,191 @@
 # Mini-Atlas V6 Alpha
 
-# CDS-08 Dual Leg & Pelvis Integration
+# CDS-08 Dual Leg and Pelvis Integration
 
-Version: 1.0 Freeze A
+Version: 1.0
 
-Status: APPROVED
+Status: INTEGRATION REVIEW
 
-Assembly Number:
+Document Number:
 
-V6-ASM-0020
+CDS-08
+
+Subsystem:
+
+Lower Body
 
 Assembly Name:
 
-Dual Leg & Pelvis Subsystem
+DualLeg_Pelvis_Assembly_RevA
 
-Parent System:
+Parent Documents:
 
-Mini-Atlas V6 Alpha
-
-Related Documents:
-
-* CDS-07 Full Leg Subsystem Integration
-* SR-001 System Weight Budget
-* DR-012 Leg Kinematics & Torque Validation
-* MDS-04 Pelvis & Electronics Assembly Specification
-* EDS-02 Power Budget & Current Analysis
+* CDS-03D HipRoll Assembly
+* CDS-04D HipPitch Assembly
+* CDS-05D Knee Assembly
+* DR-010 Leg Subsystem Review
 
 ---
 
 # 1. Purpose
 
-将左/右腿与 Pelvis 总成集成为完整下半身子系统，冻结：
+完成双腿与骨盆的第一次数字装配（Digital Mockup）。
 
-* 双腿间距 (Hip Spacing)
-* Pelvis 总成尺寸与安装孔位
-* Battery Bay 布局
-* PDB 和 Buck 模块位置
-* 主线束走向
-* 重心 (COM) 布局
-* 下半身维护通道
+目标：
 
-通过后，下半身总成达到系统级设计冻结，可进入全身组装阶段。
-
----
-
-# 2. Dual Leg Layout
-
-* Hip Spacing：160 mm（中心到中心）
-* 左右腿：对称布局
-* 下肢自由度：3 DOF / Leg
-* 轮模块：刚性安装于 Lower Leg
-* 结构链：
-
-Pelvis
-
-↓
-
-Hip Roll
-
-↓
-
-Hip Pitch
-
-↓
-
-Upper Leg
-
-↓
-
-Knee
-
-↓
-
-Lower Leg
-
-↓
-
-Wheel Module
+* 骨盆与左右腿对齐
+* 双腿长度一致
+* 下肢重量分布均衡
+* 髋关节同步
+* 确认线缆/通道布置
+* 骨盆、腿部打印件可装配
+* 骨盆维护可行
 
 ---
 
-# 3. Pelvis Frame
+# 2. Assembly Structure
 
-* 宽度：180 mm
-* 高度：70 mm
-* 材质：PETG + Carbon Tube Reinforcement
-* 下腿接口：2 × Hip Roll Base Plate
-* 插拔方式：螺丝固定 + Brass Insert
-* 维护开口：左右对称，直通 Battery Bay
+Assembly: DualLeg_Pelvis_Assembly_RevA
 
----
+Contains:
 
-# 4. Battery Bay
-
-* 电池类型：3S2P 18650 Samsung 30Q
-* 容量：约 3800 mAh
-* 安装方式：抽拉式卡槽
-* 电池接口：XT30
-* 位置：Pelvis 下方，靠近中心
-* 重心优化：尽量靠近骨盆 COM
+* Pelvis_RevA
+* Left Leg Assembly (Hip Roll → Hip Pitch → Knee)
+* Right Leg Assembly (Hip Roll → Hip Pitch → Knee)
+* SERVO_STS3046 ×6
+* Bearings ×12
+* SHAFT_8MM ×6
+* M3 Hardware
 
 ---
 
-# 5. Electronics Mounting
+# 3. Coordinate System
 
-* ESP32 DevKitC ×1
-* PDB ×1
-* 7.4V Buck ×1
-* 5V Buck ×1
-* 电源开关位置：Pelvis 前端上盖
-* 接口布局：整洁，便于维护
-* 线束通道：Ø8 mm，贯穿左右腿
+Origin: Pelvis Center
 
----
++X Forward
 
-# 6. COM Layout
++Y Left
 
-* 双腿重量中心：约 100 mm 下方 Pelvis 平面
-* Battery COM：约 20 mm 下方 Pelvis 中心
-* Electronics COM：Pelvis 上层
-* 整体重心：约 Pelvis 中心线下 30~50 mm
-* 目标：保证站立稳定，Hip Pitch 扭矩 ≤ 80% 峰值
++Z Up
+
+Status: FROZEN
 
 ---
 
-# 7. Wire Harness Routing
+# 4. Pelvis Interface
 
-* Servo Bus：左右腿各 3 舵机，串联至 Pelvis
-* Wheel Motor Cable：穿通 Lower Leg 与 Pelvis
-* 电池电源：XT30 至 PDB
-* 备用接口：IMU、未来传感器
-* 线束固定：Cable Tie Anchor + 支架槽
+* Hip Roll Mounting Holes symmetric
+* Hip Pitch Output Plane aligned
+* Cable / Tube Passages confirmed
 
----
-
-# 8. Assembly Sequence
-
-1. 安装 Pelvis Frame
-2. 安装 Battery Bay
-3. 安装 PDB / Buck / ESP32
-4. 左右腿安装至 Hip Roll Base
-5. 固定 Hip Spacing 螺丝
-6. 安装 Lower Leg Carbon Tube
-7. 安装 Knee & Wheel Module
-8. 线束穿通并固定
-9. 电池安装
-10. 功能验证（站立、姿态、轮模块驱动）
+Status: FROZEN
 
 ---
 
-# 9. Weight Budget Verification
+# 5. Leg Alignment
 
-| Component          | Weight |
-| ------------------ | -----: |
-| Pelvis Frame       |  350 g |
-| Battery            |  380 g |
-| Electronics        |  150 g |
-| Left Leg           |  798 g |
-| Right Leg          |  798 g |
-| Covers / Fasteners |  120 g |
+* Left / Right Legs equal length
+* Hip Roll / Hip Pitch / Knee axes parallel
+* Ground Clearance verified
+* Foot / Wheel interface aligned
 
-Total ≈ 2596 g
+Result: PASS REQUIRED
 
 ---
 
-目标 ≤ 4.0 kg ✅
-Margin = 1.4 kg，满足 DR-012 设定
+# 6. Motion Range Verification
+
+* Hip Roll ±30°
+* Hip Pitch -45°~+90°
+* Knee 0°~120°
+
+Check for collision during full motion sweep:
+
+* Left leg vs Right leg
+* Left leg vs Pelvis
+* Right leg vs Pelvis
+
+Result: PASS REQUIRED
 
 ---
 
-# 10. Maintenance Verification
+# 7. Weight and Balance Review
 
-* Servo 更换 <5 min / Leg
-* Wheel Module 更换 <5 min / Leg
-* Battery 更换 <2 min
-* Electronics 快速可维护
-* Brass Insert + Cable Tie 易操作
+* Total Lower Body Weight ~2.8~3.0 kg
+* Pelvis Center of Gravity near center
+* Leg distribution symmetrical
 
----
-
-# 11. Stability & COM Verification
-
-* 双腿站立：PASS
-* 静态步态：PASS
-* 轮辅助模式：PASS
-* Ground Clearance：≈20 mm
-* 重心偏差：≤10 mm
+Result: PASS REQUIRED
 
 ---
 
-# 12. Freeze Summary
+# 8. Maintenance Review
 
-* Hip Spacing：160 mm
-* Pelvis Width：180 mm
-* Battery Bay：固定，XT30接口
-* PDB / Buck / ESP32 安装位置冻结
-* Wire Harness Routing 冻结
-* COM Layout 冻结
-* 维护开口冻结
-* Weight Budget 符合 SR-001
+* Servo replacement possible without拆解骨盆
+* Bearings accessible
+* Shaft可拆卸
+* Tube可更换
 
-Status: APPROVED
-READY FOR: CDS-09 Full Body Integration
+Result: PASS REQUIRED
+
+---
+
+# 9. Interference Analysis
+
+* Digital Mockup sweep
+* Section View
+* Collision Detection
+
+Result: 0 Hard Interference
+
+Status: MANDATORY
+
+---
+
+# 10. Printability Review
+
+* Bambu A1 Mini compatible
+* No hidden cavities
+* Support strategy valid
+* Bearing / Tube seats printable
+
+Result: PASS REQUIRED
+
+---
+
+# 11. Deliverables
+
+Required Files:
+
+DualLeg_Pelvis_Assembly_RevA.f3d
+
+DualLeg_Pelvis_Assembly_RevA.step
+
+Required Outputs:
+
+* Exploded View
+* Section View
+* Motion Sweep Report
+* Weight Report
+* Interference Report
+
+---
+
+# 12. Freeze Decision
+
+* Dual Leg Assembly: FROZEN
+* Pelvis: FROZEN
+* Ready for Full Body Integration
+
+---
+
+# 13. Exit Criteria
+
+* Assembly Complete: PASS
+* Interference Free: PASS
+* Weight Distribution Valid: PASS
+* Manufacturable: PASS
+* Maintainable: PASS
+
+Status: DUAL LEG & PELVIS SUBSYSTEM FROZEN

@@ -800,8 +800,10 @@ Length 120 mm
 ```text
 GB37-520
 
-100 mm Wheel
+80 mm Wheel
 ```
+
+> **ECO-001 变更**：轮径由 100mm 更新为 80mm（DR-011 决定）。
 
 ---
 

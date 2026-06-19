@@ -237,44 +237,41 @@ Wheel Module
 ## Mechanical Topology（机械拓扑）
 
 ```text
-             Pelvis
-             （骨盆）
+              Pelvis
+              （骨盆）
 
-                │
+                 │
 
-          Hip Roll
-        （髋关节侧摆）
+           Hip Roll
+         （髋关节侧摆）
 
-                │
+                 │
 
-          Hip Pitch
-        （髋关节前摆）
+           Hip Pitch
+         （髋关节前后摆）
 
-                │
+                 │
 
-             Thigh
-             （大腿）
+              Thigh
+              （大腿）
 
-                │
+                 │
 
-             Knee
-            （膝盖）
+              Knee
+             （膝盖）
 
-                │
+                 │
 
               Calf
              （小腿）
 
-                │
+                 │
 
-             Ankle
-             （踝关节）
-
-                │
-
-             Wheel
-              （轮）
+           Wheel
+          （轮组）
 ```
+
+> 注：踝关节已移除（DR-011），小腿直接连接刚性轮足安装座。
 
 ---
 
@@ -287,15 +284,18 @@ Wheel Module
 | Hip Roll    | 髋关节侧摆  |
 | Hip Pitch   | 髋关节前后摆 |
 | Knee Pitch  | 膝关节    |
-| Ankle Pitch | 踝关节    |
 
 ---
 
 总计：
 
 ```text
-4 DOF Per Leg
+3 Servo DOF × 2 Legs
+=
+6 Servo DOF
 ```
+
+> **ECO-001 变更**：踝关节已移除（DR-011 Rigid Wheel Mount）。原 Ankle Pitch DOF 取消。
 
 ---
 
@@ -357,20 +357,15 @@ STS3046
 
 ---
 
-### Ankle
-
-```text
-STS3215
-```
-
----
+> **ECO-001 变更**：踝关节已移除（DR-011）。原 STS3215 × 2 方案取消。
 
 ## Servo Quantity（舵机数量）
 
 | Model   | Quantity |
 | ------- | -------: |
 | STS3046 |        6 |
-| STS3215 |        2 |
+
+> **ECO-001 变更**：踝关节取消，仅保留 6 × STS3046。原 STS3215 × 2 方案取消。
 
 ---
 
@@ -408,7 +403,7 @@ Metal Gearbox
 冻结：
 
 ```text
-100 mm
+80 mm
 ```
 
 ---
@@ -416,7 +411,7 @@ Metal Gearbox
 ## Wheel Radius（轮半径）
 
 ```text
-50 mm
+40 mm
 ```
 
 ---
@@ -466,7 +461,7 @@ Metal Gearbox
 ## Wheel Diameter（轮径）
 
 ```text
-100 mm
+80 mm
 ```
 
 ---
@@ -711,7 +706,7 @@ Thigh Length = 120 mm
 
 Calf Length = 120 mm
 
-Wheel Diameter = 100 mm
+Wheel Diameter = 80 mm
 ```
 
 ---
@@ -724,9 +719,10 @@ Hip Roll  = STS3046
 Hip Pitch = STS3046
 
 Knee      = STS3046
-
-Ankle     = STS3215
 ```
+
+> ECO-001 变更：踝关节取消，无 STS3215。
+> 3 DOF/Leg × 2 Legs = 6 Servo DOF + 2 Wheel DOF = 8 Total DOF
 
 ---
 

@@ -113,9 +113,11 @@ Related Documents:
 | Risk                       | Mitigation                           |
 | -------------------------- | ------------------------------------ |
 | Torque Peak > Servo Rating | Torque Module + Safety Manager       |
-| Bearing Wear               | Use 6802/6803 Bearings + Lubrication |
+| Bearing Wear               | Use 688/698 Bearings (ECO-001) + Lubrication |
 | Shaft Misalignment         | CAD Simulation & Tolerances          |
 | Print Layer Delamination   | Orientation & Infill Optimization    |
+
+> **ECO-001 变更**：轴承系统由 6802/6803 更新为 688/698（ECO-001 取代）。
 
 ---
 

@@ -6,6 +6,12 @@ Version: 1.0 Freeze A
 
 Status: APPROVED
 
+> **⚠️ ECO-001 部分取代通知**
+> 本文档第 4 节"冻结轴承库"中，6803 和 6802 已被 ECO-001 正式取代为 688-2RS 和 698-2RS。
+> 取代详情见 CDS-02A ECO-001。
+> 6803 和 6802 轴承系统**不再适用于制造**，所有新设计必须使用 688/698 系统。
+> 本文档其余内容（8mm 轴标准、12mm 碳管、轴承座架构）仍然有效。
+
 Document Number:
 
 DR-006
@@ -579,17 +585,17 @@ Mitigation
 
 ---
 
-# 15. Engineering Decision
+# 16. Engineering Decision
 
 6803
 
-APPROVED
+~~FROZEN~~ → **已由 ECO-001 取代为 688-2RS**
 
 ---
 
 6802
 
-APPROVED
+~~FROZEN~~ → **已由 ECO-001 取代为 698-2RS**
 
 ---
 
@@ -613,35 +619,56 @@ APPROVED
 
 12mm Carbon Tube
 
-APPROVED
+~~FROZEN~~ → **已由 ECO-001 取代为 OD10×ID8 碳管**
 
 ---
 
-# 16. Freeze Summary
+# 16b. ECO-001 Supersession Notice
 
-Bearing Family
+> **ECO-001（CDS-02A）正式部分取代本文件以下冻结项：**
+> - 6803-2RS → 688-2RS（Hip Roll）
+> - 6802-2RS → 698-2RS（Hip Pitch / Knee）
+> - 12mm OD Carbon Tube → OD10×ID8×150mm Carbon Tube
+>
+> 本文件其他冻结内容（8mm 主轴标准、双轴承架构、轴承座标准）**仍然有效**。
+>
+> 工程决策时必须参考 **CDS-02A Standard Component Library Revision A** 获取当前有效标准。
+
+---
+
+# 17. Freeze Summary
+
+## Bearing Family
+
+~~6803 / 6802~~ → **688-2RS / 698-2RS**（ECO-001 取代）
+
+> ⚠️ 6803 和 6802 **不再用于制造**，所有新设计使用 688/698
+
+---
+
+## Output Shaft
+
+8mm GCr15
 
 FROZEN
 
 ---
 
-Output Shaft
+## Carbon Tube
 
-8mm
+~~12mm OD~~ → **OD 10mm × ID 8mm × 150mm**（ECO-001 取代）
+
+---
+
+## Dual Bearing Architecture
 
 FROZEN
 
 ---
 
-Carbon Tube
+## Shaft Material
 
-12mm OD
-
-FROZEN
-
----
-
-Dual Bearing Architecture
+GCr15（取代原有 SUS304）
 
 FROZEN
 
@@ -650,6 +677,8 @@ FROZEN
 Status
 
 APPROVED
+
+> ECO-001 部分取代后重新审核通过
 
 ---
 

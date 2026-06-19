@@ -82,6 +82,12 @@ Hip Pitch Offset
 
 ---
 
+Hip Roll Motion Range
+
+±25°
+
+---
+
 Total Leg Length
 
 280 mm

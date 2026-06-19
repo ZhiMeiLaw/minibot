@@ -384,7 +384,7 @@ Carbon Tube
 
 保持统一：
 
-8×10 mm
+OD 10mm × ID 8mm
 
 Carbon Tube
 
@@ -560,7 +560,7 @@ STS3046 ×1
 
 Carbon Tube:
 
-8×10 mm
+OD 10mm × ID 8mm
 
 ---
 

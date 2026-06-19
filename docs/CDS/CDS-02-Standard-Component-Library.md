@@ -383,8 +383,10 @@ Bearing Center Axis
 Bearing
 
 ```text
-688 ×2
+688-2RS ×2
 ```
+
+规格：8×16×5 mm
 
 ---
 
@@ -393,8 +395,12 @@ Bearing
 Bearing
 
 ```text
-688 ×2
+698-2RS ×2
 ```
+
+规格：8×19×6 mm
+
+> 与 CDS-04A/04B 保持一致。698 外径 19mm 大于 688 的 16mm，提供更高抗弯刚度。
 
 ---
 
@@ -403,20 +409,16 @@ Bearing
 Bearing
 
 ```text
-688 ×2
+698-2RS ×2
 ```
+
+规格：8×19×6 mm
+
+> 与 CDS-05A/05B 保持一致。膝关节采用 18mm 轴承间距（紧凑设计）。
 
 ---
 
-## Ankle
-
-Bearing
-
-```text
-688 ×2
-```
-
----
+> **⚠️ 修订说明**：v1.0 原文中所有关节统一写为 688-2RS，与实际设计不符（Hip Pitch/Knee 使用 698）。本版本根据 CDS-04A/CDS-05A 实际冻结值更正。
 
 # 8. Shaft Standardization
 
@@ -427,7 +429,7 @@ Bearing
 Joint Shaft
 
 ```text
-Ø8 Hardened Shaft
+Ø8 GCr15 淬火钢
 ```
 
 ---
@@ -443,8 +445,10 @@ GCr15
 Tolerance
 
 ```text
-h6
+h7
 ```
+
+> 统一采用 h7 公差（原 v1.0 写作 h6 有误）。h7 配合 688/698 轴承座 +0.05/+0.10 的公差设计，装配性更好。
 
 ---
 
@@ -465,10 +469,11 @@ Advantages
 保持：
 
 ```text
-8×10 Carbon Tube
+OD 10mm × ID 8mm × L 150mm
 ```
 
----
+> 标注格式：OD（外径）× ID（内径）× L（长度）。
+> 原文档写作"8×10"容易误读为 ID×OD，本版本明确为 OD×ID。
 
 无需修改：
 
@@ -560,7 +565,7 @@ BOM-03
 
 # 12. Freeze Summary
 
-Joint Bearing
+Joint Bearing — Hip Roll
 
 ```text
 688-2RS
@@ -568,7 +573,7 @@ Joint Bearing
 
 ---
 
-Bearing Size
+Bearing Size — Hip Roll
 
 ```text
 8×16×5
@@ -576,10 +581,26 @@ Bearing Size
 
 ---
 
+Joint Bearing — Hip Pitch / Knee
+
+```text
+698-2RS
+```
+
+---
+
+Bearing Size — Hip Pitch / Knee
+
+```text
+8×19×6
+```
+
+---
+
 Joint Shaft
 
 ```text
-Ø8
+Ø8 GCr15 h7
 ```
 
 ---
@@ -587,7 +608,7 @@ Joint Shaft
 Carbon Tube
 
 ```text
-8×10
+OD 10mm × ID 8mm × L 150mm
 ```
 
 ---
@@ -603,3 +624,5 @@ READY FOR CDS-03A
 
 HipRoll_Base CAD Design
 ```
+
+> v1.1 修订：Section 7 原"全关节 688"更正为"Roll 用 688，Pitch/Knee 用 698"；Section 8 公差 h6 更正为 h7；Section 9 标注格式明确。

@@ -359,7 +359,7 @@ STS3046 峰值输出
 
 Carbon Tube
 
-8×10 mm
+OD 10mm × ID 8mm
 
 ---
 
@@ -397,7 +397,7 @@ Cross Section
 
 夹缝：
 
-1.5 mm
+2.0 mm
 
 ---
 
@@ -813,7 +813,7 @@ Bearing
 
 Carbon Tube
 
-8×10
+OD 10mm × ID 8mm
 
 ---
 

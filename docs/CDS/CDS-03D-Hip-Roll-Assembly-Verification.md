@@ -459,7 +459,7 @@ PASS
 标准：
 
 ```text
-8×10 Carbon Tube
+OD 10mm × ID 8mm Carbon Tube
 ```
 
 ---
@@ -993,7 +993,7 @@ Shaft
 Carbon Tube
 
 ```text
-8×10 mm
+OD 10mm × ID 8mm
 ```
 
 ---

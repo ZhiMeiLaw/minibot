@@ -710,7 +710,7 @@ STS3046
 
 Carbon Tube
 
-8×10 mm
+OD 10mm × ID 8mm
 
 ---
 
