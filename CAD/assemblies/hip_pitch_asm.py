@@ -1,0 +1,88 @@
+"""
+Hip Pitch Assembly
+Mini-Atlas V6 Alpha
+Base + Output + 2x698-2RS + Shaft (40mm) + TorqueModule
+Hip Pitch axis: Y direction (robot pitches forward/backward)
+Ref: MDS-03, CDS-04A, CDS-04B, ECO-001
+"""
+import FreeCAD as App
+import Part
+import os
+import sys
+import math
+
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from config import FCSTD_DIR
+import config_params as P
+
+doc = App.newDocument("HipPitchAsm")
+
+W, D, H = P.HIP_PITCH_BASE_W, P.HIP_PITCH_BASE_D, P.HIP_PITCH_BASE_H
+x_ctr = W / 2
+y_ctr = D / 2
+z_ctr = H / 2
+
+hp_base = doc.addObject("Part::Feature", "HipPitchBase")
+hp_base.Shape = Part.makeBox(W, D, H)
+
+brg_d = P.POCKET_D_HPK
+brg_depth = P.POCKET_DEPTH_HPK
+spacing = P.BEARING_SPACING_HIP_PITCH
+for dx in [-spacing / 2, spacing / 2]:
+    pocket = Part.makeCylinder(brg_d / 2, brg_depth + 2,
+                                App.Vector(x_ctr + dx, y_ctr, z_ctr), App.Vector(0, 1, 0))
+    hp_base.Shape = hp_base.Shape.cut(pocket)
+
+servo_box = Part.makeBox(P.SERVO_POCKET_D + 1, P.SERVO_POCKET_W + 1, P.SERVO_POCKET_H + 1,
+                          App.Vector(W - P.SERVO_POCKET_D - 0.5, y_ctr - P.SERVO_POCKET_W / 2 - 0.5,
+                                     z_ctr - P.SERVO_POCKET_H / 2 - 0.5))
+hp_base.Shape = hp_base.Shape.cut(servo_box)
+
+oW, oD, oH = P.HIP_PITCH_OUTPUT_W, P.HIP_PITCH_OUTPUT_D, P.HIP_PITCH_OUTPUT_H
+o_x_ctr = oW / 2
+o_z_ctr = oH / 2
+
+hp_out = doc.addObject("Part::Feature", "HipPitchOutput")
+hp_out.Shape = Part.makeBox(oW, oD, oH)
+
+gap = P.CLAMP_GAP
+arm_t = 4.0
+y1 = -oH / 2 + gap / 2
+y2 = oH / 2 - gap / 2
+hp_out.Shape = hp_out.Shape.cut(Part.makeBox(oW, oD + 2, arm_t, App.Vector(-oW / 2, -1, y1)))
+hp_out.Shape = hp_out.Shape.cut(Part.makeBox(oW, oD + 2, arm_t, App.Vector(-oW / 2, -1, y2)))
+hp_out.Shape = hp_out.Shape.cut(Part.makeCylinder(P.SHAFT_D / 2 + 0.1, oW + 4,
+                                                    App.Vector(-2, oD / 2, o_z_ctr), App.Vector(1, 0, 0)))
+
+hp_out.Placement = App.Placement(App.Vector(x_ctr, y_ctr, z_ctr), App.Rotation(0, 0, 0))
+
+hp_torque = doc.addObject("Part::Feature", "HipPitchTorque")
+hp_torque.Shape = Part.makeCylinder(14, 10, App.Vector(0, 0, 0), App.Vector(0, 0, 1))
+hp_torque.Shape = hp_torque.Shape.cut(Part.makeCylinder(P.SHAFT_D / 2, 12, App.Vector(0, 0, -1), App.Vector(0, 0, 1)))
+for i in range(4):
+    ang = math.pi / 4 + i * math.pi / 2
+    bx = 9.0 * math.cos(ang)
+    by = 9.0 * math.sin(ang)
+    hp_torque.Shape = hp_torque.Shape.cut(Part.makeCylinder(1.6, 12, App.Vector(bx, by, -1), App.Vector(0, 0, 1)))
+hp_torque.Placement = App.Placement(App.Vector(x_ctr, y_ctr, z_ctr), App.Rotation(0, 0, 0))
+
+shaft = doc.addObject("Part::Feature", "Shaft")
+shaft.Shape = Part.makeCylinder(P.SHAFT_D / 2, 40.0, App.Vector(x_ctr - 20, y_ctr, z_ctr), App.Vector(1, 0, 0))
+
+b1 = doc.addObject("Part::Feature", "Bearing1")
+b1.Shape = Part.makeCylinder(P.BEARING_HIP_PITCH["od"] / 2, P.BEARING_HIP_PITCH["th"],
+                               App.Vector(x_ctr - spacing / 2, y_ctr - 3, z_ctr), App.Vector(0, 1, 0))
+b2 = doc.addObject("Part::Feature", "Bearing2")
+b2.Shape = Part.makeCylinder(P.BEARING_HIP_PITCH["od"] / 2, P.BEARING_HIP_PITCH["th"],
+                               App.Vector(x_ctr + spacing / 2, y_ctr - 3, z_ctr), App.Vector(0, 1, 0))
+
+asm_shape = hp_base.Shape.fuse(hp_out.Shape).fuse(hp_torque.Shape).fuse(shaft.Shape).fuse(b1.Shape).fuse(b2.Shape)
+asm = doc.addObject("Part::Feature", "HipPitchAsm")
+asm.Shape = asm_shape
+
+doc.recompute()
+out = os.path.join(FCSTD_DIR, "hip_pitch_asm.fcstd")
+doc.saveCopy(out)
+_doc_name = doc.Name if hasattr(doc, 'Name') else doc.Label
+App.closeDocument(_doc_name)
+print(f"[OK] hip_pitch_asm.fcstd -> {out}")
