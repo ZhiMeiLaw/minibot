@@ -354,7 +354,7 @@ Pelvis Center
 Total:
 
 ```text
-8 Servos
+6 Servos
 ```
 
 ---
@@ -486,7 +486,7 @@ DRV8871
 容量：
 
 ```text
-6000mAh
+3000mAh
 ```
 
 ---
@@ -494,8 +494,12 @@ DRV8871
 能量：
 
 ```text
-66Wh
+33.3Wh
 ```
+
+---
+
+> **ECO-002 变更**：电池容量由 6000mAh 修正为 3000mAh（3S2P 串联不倍增容量），能量由 66Wh 修正为 33.3Wh。
 
 ---
 
@@ -707,7 +711,9 @@ Wheel Wiring
 
 ---
 
-## Foot
+## Wheel Module
+
+> **ECO-002 变更**：原 "Foot" 小节更名为 "Wheel Module"（DR-011 移除踝关节后无 Foot 结构）。
 
 安装：
 
@@ -790,15 +796,13 @@ ROS2 Bridge
 | IMU | ICM42688-P | 1 |
 | STS3046 | Servo | 6 |
 | Wheel Motor | GB37-520 | 2 |
-| Motor Driver | DRV8871 | 1 |
+| Motor Driver | DRV8871 | 2 |
 | Battery | Samsung 30Q | 6 |
 | XT30 | Amass XT30U | 2 |
-| Fuse | 20A ATO | 1 |
+| Fuse | 25A ATO Slow Blow | 1 |
 
 > **ECO-001 变更**：踝关节取消，移除 STS3215；轮驱 IC 统一为 DRV8871。
-| Battery | Samsung 30Q | 6 |
-| XT30 | Amass XT30U | 2 |
-| Fuse | 20A ATO | 1 |
+> **ECO-002 变更**：Motor Driver 数量由 1 修正为 2（每轮电机一颗 DRV8871）；Fuse 规格统一为 25A ATO Slow Blow × 1；删除重复的 Battery/XT30/Fuse 行。
 
 ---
 

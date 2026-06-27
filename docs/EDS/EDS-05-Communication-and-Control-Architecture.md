@@ -94,11 +94,13 @@ EKF
 
       │
 
-STS3046 / STS3215
+STS3046
 
 ```
 
 ---
+
+> **ECO-002 变更**：STS3215 已删除（DR-011 移除踝关节）。
 
 # 4. MCU Selection
 
@@ -271,7 +273,6 @@ Servo8
 | Hip Roll L | 1 |
 | Hip Pitch L | 2 |
 | Knee L | 3 |
-| Ankle L | 4 |
 
 ---
 
@@ -279,10 +280,9 @@ Servo8
 
 | Joint | ID |
 |---------|---------:|
-| Hip Roll R | 5 |
-| Hip Pitch R | 6 |
-| Knee R | 7 |
-| Ankle R | 8 |
+| Hip Roll R | 4 |
+| Hip Pitch R | 5 |
+| Knee R | 6 |
 
 ---
 
@@ -290,7 +290,7 @@ Servo8
 
 | Function | ID |
 |------------|---------:|
-| Arms | 9~20 |
+| Arms | 7~20 |
 | Head | 21~30 |
 
 ---
@@ -298,7 +298,7 @@ Servo8
 Freeze：
 
 ```text
-ID 1~8
+ID 1~6
 ```
 
 ---
@@ -647,7 +647,7 @@ V6 Alpha：
 冻结：
 
 ```text
-TB6612FNG
+DRV8871
 ```
 
 ---
@@ -930,7 +930,7 @@ WiFi OTA
 ## Framework
 
 ```text
-ArduinoOTA
+ESP-IDF Native OTA (Partition A/B)
 ```
 
 ---
@@ -938,7 +938,7 @@ ArduinoOTA
 未来：
 
 ```text
-ESP-IDF OTA
+HTTP OTA with Remote Server
 ```
 
 ---
@@ -1126,7 +1126,7 @@ UART
 ## Wheel Driver
 
 ```text
-TB6612FNG
+DRV8871
 ```
 
 ---
@@ -1185,6 +1185,8 @@ Low Battery Protection
 
 ```text
 WiFi OTA
+
+ESP-IDF A/B
 ```
 
 ---

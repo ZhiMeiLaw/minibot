@@ -49,7 +49,7 @@ Status: APPROVED
 
 12.6V Full
 
-6Ah Capacity
+3Ah Capacity
 ```
 
 ---
@@ -234,7 +234,7 @@ Samsung 30Q
 ## Capacity
 
 ```text
-6000mAh
+3000mAh
 ```
 
 ---
@@ -242,7 +242,7 @@ Samsung 30Q
 ## Energy
 
 ```text
-66Wh
+33.3Wh
 ```
 
 ---
@@ -965,7 +965,7 @@ Samsung 30Q
 
 3S2P
 
-6000mAh
+3000mAh
 ```
 
 ---

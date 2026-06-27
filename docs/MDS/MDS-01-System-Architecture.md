@@ -301,13 +301,7 @@ Wheel Module
 
 ## Full Robot（整机自由度）
 
-```text
-4 DOF × 2 Legs
-=
-8 Servo DOF
-```
-
----
+> **ECO-002 变更**：删除错误的 "4 DOF × 2 Legs = 8 Servo DOF" 行（单腿为 3 DOF 非 4 DOF）。
 
 轮组：
 
@@ -320,12 +314,16 @@ Wheel Module
 总计：
 
 ```text
-8 Servo DOF
+6 Servo DOF
 +
 2 Wheel DOF
 =
-10 DOF
+8 DOF
 ```
+
+---
+
+> **ECO-002 变更**：修正为 6 Servo DOF + 2 Wheel DOF = 8 Total DOF（原 "8 Servo DOF" 为错误值）。
 
 ---
 

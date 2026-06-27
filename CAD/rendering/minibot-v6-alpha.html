@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>Mini-Atlas V6 Alpha</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#0d0d12; color:#ccc; font-family:'Segoe UI','Microsoft YaHei',sans-serif; display:flex; flex-direction:column; align-items:center; padding:20px; }
+  h1 { font-size:18px; letter-spacing:3px; color:#00b4d8; margin-bottom:2px; }
+  .sub { font-size:10px; color:#444; margin-bottom:10px; }
+  .wrap { width:800px; background:#0f0f16; border:1px solid #1a1a2e; border-radius:8px; overflow:hidden; }
+  svg { display:block; width:100%; }
+  .foot { margin-top:10px; font-size:9px; color:#333; }
+</style>
+</head>
+<body>
+
+<h1>MINI-ATLAS V6 ALPHA</h1>
+<div class="sub">LOWER BODY ONLY · PELVIS + 2 LEGS · NO TORSO/HEAD YET</div>
+
+<div class="wrap">
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <linearGradient id="gPetg" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#5a5a5a"/><stop offset="100%" stop-color="#3a3a3a"/>
+  </linearGradient>
+  <linearGradient id="gCar" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#222"/><stop offset="50%" stop-color="#333"/><stop offset="100%" stop-color="#222"/>
+  </linearGradient>
+  <linearGradient id="gMet" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#888"/><stop offset="100%" stop-color="#555"/>
+  </linearGradient>
+  <linearGradient id="gMot" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#445"/><stop offset="100%" stop-color="#223"/>
+  </linearGradient>
+  <filter id="sh"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.4"/></filter>
+  <filter id="gl"><feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+
+<!-- Floor -->
+<line x1="100" y1="530" x2="700" y2="530" stroke="#00b4d8" stroke-width="0.5" opacity="0.3"/>
+
+<!-- ===== PELVIS centered at (400, 250) ===== -->
+<!-- Pelvis: 120W x 80D x 60H mm, scale 0.8x -->
+<g filter="url(#sh)" transform="translate(400, 250) scale(0.8)">
+
+<!-- Pelvis box -->
+<rect x="-60" y="-30" width="120" height="60" rx="5" fill="url(#gPetg)" stroke="#555" stroke-width="1"/>
+<rect x="-45" y="-22" width="90" height="44" rx="3" fill="none" stroke="#666" stroke-width="0.5" stroke-dasharray="4,3"/>
+<text x="0" y="5" text-anchor="middle" font-size="7" fill="#666" font-family="monospace">3S2P BATTERY</text>
+<rect x="-50" y="-22" width="22" height="25" rx="2" fill="url(#gMet)" stroke="#888" stroke-width="0.5"/>
+<text x="-39" y="-7" text-anchor="middle" font-size="4.5" fill="#555" font-family="monospace">ESP32</text>
+<text x="0" y="45" text-anchor="middle" font-size="8" fill="#888" font-family="monospace">PELVIS 120x60</text>
+
+<!-- ===== LEFT LEG (Y=-50 in full_body_asm) ===== -->
+<g transform="translate(-50, 0)">
+  <!-- Hip Roll: z=-21~21, w=70, h=42 -->
+  <rect x="-35" y="-21" width="70" height="42" rx="3" fill="url(#gPetg)" stroke="#666" stroke-width="0.8"/>
+  <text x="0" y="5" text-anchor="middle" font-size="6" fill="#777" font-family="monospace">HIP ROLL</text>
+
+  <!-- Hip Pitch: z=21~56, w=50, h=35 -->
+  <rect x="-25" y="21" width="50" height="35" rx="3" fill="url(#gPetg)" stroke="#666" stroke-width="0.8"/>
+  <text x="0" y="42" text-anchor="middle" font-size="6" fill="#777" font-family="monospace">HIP PITCH</text>
+
+  <!-- Thigh carbon tube: OD10, center z=73.5, len=120 → y=13.5~133.5 -->
+  <rect x="-5" y="13.5" width="10" height="120" rx="1" fill="url(#gCar)" stroke="#444" stroke-width="0.5"/>
+
+  <!-- Knee: z=73.5~108.5, w=50, h=35 -->
+  <rect x="-25" y="73.5" width="50" height="35" rx="3" fill="url(#gPetg)" stroke="#666" stroke-width="0.8"/>
+  <text x="0" y="95" text-anchor="middle" font-size="6" fill="#777" font-family="monospace">KNEE</text>
+
+  <!-- Calf carbon tube: center z=186, len=120 → y=126~246 -->
+  <rect x="-5" y="126" width="10" height="120" rx="1" fill="url(#gCar)" stroke="#444" stroke-width="0.5"/>
+
+  <!-- Wheel adapter -->
+  <rect x="-12" y="246" width="24" height="15" rx="2" fill="url(#gPetg)" stroke="#666" stroke-width="0.8"/>
+
+  <!-- Motor -->
+  <rect x="-10" y="261" width="20" height="16" rx="2" fill="url(#gMet)" stroke="#888" stroke-width="0.5"/>
+
+  <!-- Wheel: r=40, center z=317 -->
+  <circle cx="0" cy="317" r="40" fill="url(#gMot)" stroke="#555" stroke-width="1.2"/>
+  <circle cx="0" cy="317" r="38" fill="none" stroke="#333" stroke-width="2"/>
+  <circle cx="0" cy="317" r="7" fill="url(#gMet)" stroke="#888" stroke-width="0.4"/>
+  <circle cx="0" cy="277" r="1.2" fill="#222" stroke="#555" stroke-width="0.2"/>
+  <circle cx="0" cy="357" r="1.2" fill="#222" stroke="#555" stroke-width="0.2"/>
+  <circle cx="-40" cy="317" r="1.2" fill="#222" stroke="#555" stroke-width="0.2"/>
+  <circle cx="40" cy="317" r="1.2" fill="#222" stroke="#555" stroke-width="0.2"/>
+</g>
+
+<!-- ===== RIGHT LEG (Y=+50) ===== -->
+<g transform="translate(50, 0)">
+  <rect x="-35" y="-21" width="70" height="42" rx="3" fill="url(#gPetg)" stroke="#666" stroke-width="0.8"/>
+  <text x="0" y="5" text-anchor="middle" font-size="6" fill="#777" font-family="monospace">HIP ROLL</text>
+  <rect x="-25" y="21" width="50" height="35" rx="3" fill="url(#gPetg)" stroke="#666" stroke-width="0.8"/>
+  <text x="0" y="42" text-anchor="middle" font-size="6" fill="#777" font-family="monospace">HIP PITCH</text>
+  <rect x="-5" y="13.5" width="10" height="120" rx="1" fill="url(#gCar)" stroke="#444" stroke-width="0.5"/>
+  <rect x="-25" y="73.5" width="50" height="35" rx="3" fill="url(#gPetg)" stroke="#666" stroke-width="0.8"/>
+  <text x="0" y="95" text-anchor="middle" font-size="6" fill="#777" font-family="monospace">KNEE</text>
+  <rect x="-5" y="126" width="10" height="120" rx="1" fill="url(#gCar)" stroke="#444" stroke-width="0.5"/>
+  <rect x="-12" y="246" width="24" height="15" rx="2" fill="url(#gPetg)" stroke="#666" stroke-width="0.8"/>
+  <rect x="-10" y="261" width="20" height="16" rx="2" fill="url(#gMet)" stroke="#888" stroke-width="0.5"/>
+  <circle cx="0" cy="317" r="40" fill="url(#gMot)" stroke="#555" stroke-width="1.2"/>
+  <circle cx="0" cy="317" r="38" fill="none" stroke="#333" stroke-width="2"/>
+  <circle cx="0" cy="317" r="7" fill="url(#gMet)" stroke="#888" stroke-width="0.4"/>
+  <circle cx="0" cy="277" r="1.2" fill="#222" stroke="#555" stroke-width="0.2"/>
+  <circle cx="0" cy="357" r="1.2" fill="#222" stroke="#555" stroke-width="0.2"/>
+  <circle cx="-40" cy="317" r="1.2" fill="#222" stroke="#555" stroke-width="0.2"/>
+  <circle cx="40" cy="317" r="1.2" fill="#222" stroke="#555" stroke-width="0.2"/>
+</g>
+
+</g>
+
+<!-- DIMENSIONS -->
+<g opacity="0.6">
+  <line x1="180" y1="100" x2="180" y2="530" stroke="#00b4d8" stroke-width="0.5"/>
+  <line x1="175" y1="100" x2="185" y2="100" stroke="#00b4d8" stroke-width="0.5"/>
+  <line x1="175" y1="530" x2="185" y2="530" stroke="#00b4d8" stroke-width="0.5"/>
+  <text x="175" y="315" text-anchor="middle" font-size="9" fill="#00b4d8" font-family="monospace"
+        transform="rotate(-90,175,315)">≈340 mm</text>
+</g>
+
+<g opacity="0.5">
+  <line x1="290" y1="530" x2="510" y2="530" stroke="#ff8800" stroke-width="0.5"/>
+  <text x="400" y="525" text-anchor="middle" font-size="7" fill="#ff8800" font-family="monospace">Ø80 mm</text>
+</g>
+
+<g opacity="0.4">
+  <line x1="280" y1="250" x2="520" y2="250" stroke="#666" stroke-width="0.5"/>
+  <text x="400" y="245" text-anchor="middle" font-size="7" fill="#666" font-family="monospace">100 mm</text>
+</g>
+
+<text x="400" y="15" text-anchor="middle" font-size="10" fill="#00b4d8" opacity="0.4" font-family="monospace" letter-spacing="2">
+  MINI-ATLAS V6 ALPHA · LOWER BODY · FRONT VIEW
+</text>
+
+<!-- Labels -->
+<g font-size="5.5" fill="#555" font-family="monospace">
+  <text x="330" y="-30" text-anchor="end">Pelvis</text>
+  <text x="330" y="-20" text-anchor="end">60mm</text>
+  <text x="330" y="0" text-anchor="end">Hip Roll</text>
+  <text x="330" y="38" text-anchor="end">Hip Pitch</text>
+  <text x="330" y="90" text-anchor="end">Knee</text>
+  <text x="330" y="175" text-anchor="end">Thigh</text>
+  <text x="330" y="280" text-anchor="end">Calf</text>
+  <text x="330" y="317" text-anchor="end">Wheel</text>
+</g>
+
+</svg>
+</div>
+
+<div class="foot">LOWER BODY ONLY · PELVIS + 2 LEGS · TORSO/HEAD/ARMS NOT YET DESIGNED</div>
+
+</body>
+</html>

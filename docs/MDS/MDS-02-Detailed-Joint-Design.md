@@ -583,10 +583,14 @@ Wheel Fork
 
 | Item    | Value     |
 | ------- | --------- |
-| Servo   | STS3215   |
-| Shaft   | 5 mm      |
-| Bearing | MR105 × 2 |
+| Servo   | STS3046   |
+| Shaft   | 8 mm      |
+| Bearing | 688 × 2   |
 | DOF     | 1         |
+
+---
+
+> **ECO-002 变更**：原 "STS3215 / 5mm Shaft / MR105" 为 Ankle 旧方案（已移除），统一为 STS3046 / 8mm Shaft / 688 轴承以匹配当前架构。
 
 ---
 
@@ -719,15 +723,7 @@ Carbon Tube Internal Routing
 
 ---
 
-### Ankle
-
-| Item          | Qty |
-| ------------- | --: |
-| STS3215       |   1 |
-| MR105 Bearing |   2 |
-| 5mm Shaft     |   1 |
-
----
+> **ECO-002 变更**：Ankle 已移除（DR-011），本节保留仅作为历史参考。实际 BOM 不含 Ankle 部件。
 
 # 10. Design Freeze Summary
 

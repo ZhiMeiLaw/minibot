@@ -81,7 +81,7 @@ Fail Safe Design
 
      │         │         │
 
- Servo Bus   ESP32   TB6612
+ Servo Bus   ESP32   DRV8871
 
 ```
 
@@ -712,7 +712,7 @@ Driver Current Limit
 
 ---
 
-TB6612：
+DRV8871：
 
 内部保护。
 

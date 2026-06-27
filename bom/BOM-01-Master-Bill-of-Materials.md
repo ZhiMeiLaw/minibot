@@ -247,6 +247,30 @@ Weight
 
 ---
 
+## Wheel Adapter Plate
+
+| Item      | Value        |
+| --------- | ------------ |
+| Model     | PETG Printed |
+| Qty       | 2            |
+| Weight    | 40 g         |
+| Cost      | 5 RMB        |
+
+---
+
+## Wheel Hub
+
+| Item      | Value        |
+| --------- | ------------ |
+| Model     | PETG Printed |
+| Qty       | 2            |
+| Weight    | 25 g         |
+| Cost      | 3 RMB        |
+
+> **ECO-002 变更**：新增 Wheel Hub 独立零件（CDS-06 §7），用于压配合电机轴 + M3 顶丝固定轮子。
+
+---
+
 Wheel Cost
 
 ```text
@@ -308,6 +332,74 @@ Weight
 
 ```text
 80 g
+```
+
+---
+
+# 3.6 Pelvis Assembly
+
+## Pelvis Main Frame
+
+| Item      | Value        |
+| --------- | ------------ |
+| Model     | PETG Printed |
+| Qty       | 1            |
+| Weight    | 180 g        |
+| Cost      | 15 RMB       |
+
+---
+
+## Pelvis Battery Bay
+
+| Item      | Value        |
+| --------- | ------------ |
+| Model     | PETG Printed |
+| Qty       | 1            |
+| Weight    | 60 g         |
+| Cost      | 5 RMB        |
+
+> **ECO-002 变更**：新增独立 Battery Bay 零件（MDS-04 §3），滑入式设计，支持 <30秒电池更换。
+
+---
+
+## Pelvis Electronics Deck
+
+| Item      | Value        |
+| --------- | ------------ |
+| Model     | PETG Printed |
+| Qty       | 1            |
+| Weight    | 40 g         |
+| Cost      | 5 RMB        |
+
+> **ECO-002 变更**：新增独立 Electronics Deck（MDS-04 §4-6），ESP32 4点安装 + Buck 固定槽。
+
+---
+
+## Pelvis Service Hatch
+
+| Item      | Value        |
+| --------- | ------------ |
+| Model     | PETG Printed |
+| Qty       | 1            |
+| Weight    | 25 g         |
+| Cost      | 3 RMB        |
+
+> **ECO-002 变更**：新增 Service Hatch（MDS-04 §14），后部可拆卸盖板，4×M3 固定，支持电池/XT30/开关维护。
+
+---
+
+Pelvis Cost
+
+```text
+28 RMB
+```
+
+---
+
+Weight
+
+```text
+305 g
 ```
 
 ---
@@ -405,11 +497,15 @@ Weight
 
 ## Fuse
 
-| Item  | Value   |
-| ----- | ------- |
-| Model | ATO 25A |
-| Qty   | 2       |
-| Cost  | 5 RMB   |
+| Item  | Value       |
+| ----- | ----------- |
+| Model | ATO 25A     |
+| Qty   | 1           |
+| Cost  | 5 RMB       |
+
+---
+
+> **ECO-002 变更**：Fuse 数量由 2 修正为 1（主回路单点保护），规格统一为 25A Slow Blow（EDS-03 最新分析）。
 
 ---
 
@@ -499,28 +595,34 @@ Weight
 
 # 6. Cost Summary
 
-| Category     |     Cost |
-| ------------ | -------: |
-| Servo System |  900 RMB |
-| Bearings     |   60 RMB |
-| Carbon Tube  |   50 RMB |
-| Wheels       |  160 RMB |
-| Fasteners    |   50 RMB |
-| Controller   |   25 RMB |
-| IMU          |   35 RMB |
-| Drivers      |   30 RMB |
-| Battery      |  150 RMB |
-| Power System |   70 RMB |
-| Connectors   |   20 RMB |
-| Wiring       |   30 RMB |
-| Printing     |   50 RMB |
+| Category           |     Cost |
+| ------------------ | -------: |
+| Servo System       |  900 RMB |
+| Bearings           |   60 RMB |
+| Carbon Tube        |   50 RMB |
+| Wheels             |  160 RMB |
+| Wheel Hardware     |   13 RMB |
+| Fasteners          |   50 RMB |
+| Pelvis Assembly    |   28 RMB |
+| Controller         |   25 RMB |
+| IMU                |   35 RMB |
+| Drivers            |   30 RMB |
+| Battery            |  150 RMB |
+| Power System       |   70 RMB |
+| Connectors         |   20 RMB |
+| Wiring             |   30 RMB |
+| Printing           |   50 RMB |
+
+---
+
+> **ECO-002 变更**：新增 Wheel Hardware（Adapter + Hub）28 RMB，Pelvis Assembly 28 RMB。
 
 ---
 
 Total
 
 ```text
-1580 RMB
+1666 RMB
 ```
 
 ---
@@ -537,23 +639,24 @@ Expected Range
 
 # 7. Weight Budget
 
-| Category      | Weight |
-| ------------- | -----: |
-| Servos        |  420 g |
-| Battery       |  290 g |
-| Wheel System  |  350 g |
-| Electronics   |   60 g |
-| Bearings      |   60 g |
-| Fasteners     |   80 g |
-| Carbon Tube   |   40 g |
-| Printed Parts |  500 g |
+| Category           | Weight |
+| ------------------ | -----: |
+| Servos             |  420 g |
+| Battery            |  290 g |
+| Wheel System       |  400 g |
+| Electronics        |   60 g |
+| Bearings           |   60 g |
+| Fasteners          |   80 g |
+| Carbon Tube        |   40 g |
+| Pelvis Assembly    |  305 g |
+| Printed Parts      |  500 g |
 
 ---
 
 Estimated Total
 
 ```text
-1800 g
+2215 g
 ```
 
 ---
@@ -565,6 +668,7 @@ Expected Final Weight
 ```
 
 > **ECO-001 变更**：与 SR-001/PR-001 一致。原 <2.5kg 目标取消。
+> **ECO-002 变更**：新增 Pelvis Assembly 305g，Wheel System 增加 Hub/Adapter 约 50g。
 
 ---
 

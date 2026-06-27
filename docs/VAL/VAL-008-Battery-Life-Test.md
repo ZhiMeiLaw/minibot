@@ -77,15 +77,17 @@ Cutoff Voltage
 
 Nominal Capacity
 
-6000mAh
+3000mAh
 
 ---
 
 Nominal Energy
 
-66.6Wh
+33.3Wh
 
 ---
+
+> **ECO-002 变更**：电池容量由 6000mAh/66.6Wh 修正为 3000mAh/33.3Wh。
 
 Status
 

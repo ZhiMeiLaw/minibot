@@ -25,8 +25,8 @@ body.Shape = body.Shape.cut(hub_cyl)
 
 bolt_circle_d = 30.0
 bolt_d = 3.0
-for i in range(6):
-    ang = i * math.pi / 3
+for i in range(4):
+    ang = i * math.pi / 2
     bx = bolt_circle_d / 2 * math.cos(ang)
     by = bolt_circle_d / 2 * math.sin(ang)
     bh = Part.makeCylinder(bolt_d / 2, 20.0, App.Vector(bx, by, -2), App.Vector(0, 0, 1))

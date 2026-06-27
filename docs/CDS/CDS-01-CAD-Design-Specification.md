@@ -189,12 +189,7 @@ Knee Assembly
 
 ---
 
-```text
-V6-ASM-0004
-Ankle Assembly
-```
-
----
+> **ECO-002 变更**：V6-ASM-0004 Ankle Assembly 已删除（DR-011 移除踝关节）。
 
 ```text
 V6-ASM-0010
@@ -227,11 +222,11 @@ Mini-Atlas Full Assembly
 
 ```text
 STS3046.step
-
-STS3215.step
 ```
 
 ---
+
+> **ECO-002 变更**：STS3215.step 已删除（DR-011 移除踝关节，STS3215 不再使用）。
 
 要求：
 

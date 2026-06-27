@@ -84,7 +84,6 @@ Worst Case Stall Current Design
 Hip Roll
 Hip Pitch
 Knee
-Ankle
 ```
 
 供电：
@@ -92,6 +91,10 @@ Ankle
 ```text
 7.4V
 ```
+
+---
+
+> **ECO-002 变更**：Ankle 已移除（DR-011），舵机域仅包含 Hip Roll / Hip Pitch / Knee。
 
 ---
 
@@ -155,21 +158,7 @@ Knee L/R
 
 ---
 
-## STS3215
-
-数量：
-
-```text
-2
-```
-
-用于：
-
-```text
-Ankle L/R
-```
-
----
+> **ECO-002 变更**：Ankle/STS3215 章节已删除（DR-011 移除踝关节）。
 
 # 5. STS3046 Current Model
 
@@ -223,37 +212,7 @@ Ankle L/R
 
 ---
 
-# 6. STS3215 Current Model
-
-经验数据：
-
-| State | Current |
-|---------|---------:|
-| Idle | 70mA |
-| Holding | 300mA |
-| Walking | 0.7A |
-| Peak | 1.2A |
-| Stall | 2.5A |
-
----
-
-冻结：
-
-```text
-0.7A Typical
-```
-
----
-
-总计：
-
-```text
-2 × 0.7A
-
-= 1.4A
-```
-
----
+> **ECO-002 变更**：STS3215 Current Model 章节已删除（DR-011 移除踝关节）。
 
 # 7. Servo Rail Analysis
 
@@ -265,28 +224,16 @@ STS3046
 6A
 ```
 
-+
-
-```text
-STS3215
-
-1.4A
-```
-
-=
-
-```text
-7.4A
-```
-
 ---
+
+> **ECO-002 变更**：STS3215 已删除（DR-011 移除踝关节），Servo Rail Typical 从 7.4A 降为 6.0A。
 
 ## Dynamic Peak
 
 假设：
 
 ```text
-4个关节同时大负载
+6个关节同时大负载
 ```
 
 ---
@@ -294,7 +241,7 @@ STS3215
 估算：
 
 ```text
-12A
+10A
 ```
 
 ---
@@ -304,7 +251,7 @@ STS3215
 短时：
 
 ```text
-15~18A
+12A
 ```
 
 ---
@@ -313,8 +260,8 @@ STS3215
 
 | Parameter | Value |
 |------------|------------|
-| Typical | 7.5A |
-| Peak | 15A |
+| Typical | 6.5A |
+| Peak | 12A |
 | Design Margin | 20A |
 
 ---
@@ -439,7 +386,7 @@ STS3215
 Servo:
 
 ```text
-7.4A
+6.0A
 ```
 
 Wheel:
@@ -459,7 +406,7 @@ Logic:
 总计：
 
 ```text
-9.5A
+8.1A
 ```
 
 ---
@@ -469,7 +416,7 @@ Logic:
 Servo:
 
 ```text
-15A
+12A
 ```
 
 Wheel:
@@ -489,7 +436,7 @@ Logic:
 总计：
 
 ```text
-18.5A
+15.5A
 ```
 
 ---
@@ -498,8 +445,8 @@ Logic:
 
 | Parameter | Value |
 |------------|------------|
-| Typical | 9.5A |
-| Peak | 18.5A |
+| Typical | 8.1A |
+| Peak | 15.5A |
 
 ---
 
@@ -518,9 +465,9 @@ Logic:
 ## Typical Power
 
 ```text
-11.1V × 9.5A
+11.1V × 8.1A
 
-= 105W
+= 90W
 ```
 
 ---
@@ -528,9 +475,9 @@ Logic:
 ## Peak Power
 
 ```text
-11.1V × 18.5A
+11.1V × 15.5A
 
-= 205W
+= 172W
 ```
 
 ---
@@ -539,8 +486,8 @@ Logic:
 
 | Parameter | Value |
 |------------|------------|
-| Typical | 105W |
-| Peak | 205W |
+| Typical | 90W |
+| Peak | 172W |
 
 ---
 
@@ -575,7 +522,7 @@ Samsung 30Q
 总容量：
 
 ```text
-6000mAh
+3000mAh
 ```
 
 ---
@@ -583,8 +530,12 @@ Samsung 30Q
 总能量：
 
 ```text
-66Wh
+33.3Wh
 ```
+
+---
+
+> **ECO-002 变更**：电池容量由 6000mAh/66Wh 修正为 3000mAh/33.3Wh（3S2P 串联不倍增容量）。
 
 ---
 
@@ -595,7 +546,7 @@ Samsung 30Q
 功耗：
 
 ```text
-105W
+90W
 ```
 
 ---
@@ -603,9 +554,9 @@ Samsung 30Q
 续航：
 
 ```text
-66Wh / 105W
+33.3Wh / 90W
 
-≈ 0.63h
+≈ 0.37h
 ```
 
 ---
@@ -613,7 +564,7 @@ Samsung 30Q
 即：
 
 ```text
-38分钟
+22分钟
 ```
 
 ---
@@ -628,7 +579,7 @@ Samsung 30Q
 平均功耗：
 
 ```text
-70W
+52W
 ```
 
 ---
@@ -636,7 +587,17 @@ Samsung 30Q
 续航：
 
 ```text
-56分钟
+33.3Wh / 52W
+
+≈ 0.64h
+```
+
+---
+
+即：
+
+```text
+38分钟
 ```
 
 ---
@@ -645,8 +606,8 @@ Samsung 30Q
 
 | Mode | Runtime |
 |---------|---------|
-| Walking | 35~40 min |
-| Mixed | 50~60 min |
+| Walking | 20~25 min |
+| Mixed | 35~40 min |
 
 ---
 
@@ -673,7 +634,7 @@ Samsung 30Q
 典型电流：
 
 ```text
-10A
+8A
 ```
 
 ---
@@ -685,7 +646,7 @@ Samsung 30Q
 
 
 ```text
-0.22V
+0.18V
 ```
 
 ---
@@ -693,7 +654,7 @@ Samsung 30Q
 峰值：
 
 ```text
-20A
+15A
 ```
 
 ---
@@ -701,7 +662,7 @@ Samsung 30Q
 压降：
 
 ```text
-0.44V
+0.33V
 ```
 
 ---
@@ -803,7 +764,7 @@ AWG24 Silicone
 负载：
 
 ```text
-55W
+44W
 ```
 
 ---
@@ -811,7 +772,7 @@ AWG24 Silicone
 损耗：
 
 ```text
-6W
+5W
 ```
 
 ---
@@ -853,7 +814,7 @@ AWG24 Silicone
 实际：
 
 ```text
-15A Peak
+12A Peak
 ```
 
 ---
@@ -861,7 +822,7 @@ AWG24 Silicone
 余量：
 
 ```text
-33%
+40%
 ```
 
 ---
@@ -883,7 +844,7 @@ AWG24 Silicone
 实际：
 
 ```text
-20A Peak
+15.5A Peak
 ```
 
 ---
@@ -891,7 +852,7 @@ AWG24 Silicone
 余量：
 
 ```text
-50%
+~50%
 ```
 
 ---
@@ -907,9 +868,9 @@ AWG24 Silicone
 ```text
 7.4V
 
-7.5A Typical
+6.5A Typical
 
-15A Peak
+12A Peak
 ```
 
 ---
@@ -939,9 +900,9 @@ AWG24 Silicone
 ## Total System
 
 ```text
-9.5A Typical
+8.1A Typical
 
-18.5A Peak
+15.5A Peak
 ```
 
 ---
@@ -951,7 +912,7 @@ AWG24 Silicone
 ```text
 3S2P Samsung 30Q
 
-66Wh
+33.3Wh
 ```
 
 ---
@@ -961,11 +922,11 @@ AWG24 Silicone
 ```text
 Walking
 
-35~40 Minutes
+20~25 Minutes
 
 Mixed Use
 
-50~60 Minutes
+35~40 Minutes
 ```
 
 ---

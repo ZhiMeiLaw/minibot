@@ -247,9 +247,11 @@ Logic Rail
 
 Fuse
 
-15A Automotive Blade
+25A ATO Slow Blow
 
 ---
+
+> **ECO-002 变更**：Fuse 由 15A Automotive Blade 修正为 25A ATO Slow Blow（EDS-03 最新分析，20A 有 18.5A 峰值误动作风险）。
 
 Status
 
