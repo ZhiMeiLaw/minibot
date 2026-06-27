@@ -6,7 +6,7 @@ Mini-Atlas V6 Alpha
 import FreeCAD as App
 import Part
 import Mesh
-import MeshPart
+# MeshPart.meshFromShape is broken in FreeCAD 1.1.1; use tessellate
 import os
 import sys
 import math
@@ -35,7 +35,10 @@ for i in range(4):
 doc.recompute()
 out = os.path.join(STL_DIR, "wheel_adapter.stl")
 mesh = Mesh.Mesh()
-MeshPart.meshFromShape(body.Shape, LinearDeflection=0.05, AngularDeflection=0.05, mesh=mesh)
+tess = body.Shape.tessellate(0.05)
+mesh = Mesh.Mesh()
+for tri in tess[1]:
+    mesh.addFacet(tess[0][tri[0]], tess[0][tri[1]], tess[0][tri[2]])
 mesh.write(out)
 _doc_name = doc.Name if hasattr(doc, 'Name') else doc.Label
 App.closeDocument(_doc_name)

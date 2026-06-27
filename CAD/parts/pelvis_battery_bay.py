@@ -13,7 +13,7 @@ Dimensions:
 import FreeCAD as App
 import Part
 import Mesh
-import MeshPart
+# MeshPart.meshFromShape is broken in FreeCAD 1.1.1; use tessellate
 import os
 import sys
 
@@ -86,7 +86,10 @@ bay_body.Shape = bay_body.Shape.fuse(tray_body.Shape)
 doc.recompute()
 out = os.path.join(STL_DIR, "pelvis_battery_bay.stl")
 mesh = Mesh.Mesh()
-MeshPart.meshFromShape(bay_body.Shape, LinearDeflection=0.05, AngularDeflection=0.05, mesh=mesh)
+tess = bay_body.Shape.tessellate(0.05)
+mesh = Mesh.Mesh()
+for tri in tess[1]:
+    mesh.addFacet(tess[0][tri[0]], tess[0][tri[1]], tess[0][tri[2]])
 mesh.write(out)
 _app_name = doc.Name if hasattr(doc, 'Name') else doc.Label
 App.closeDocument(_app_name)

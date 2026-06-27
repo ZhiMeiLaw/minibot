@@ -6,7 +6,6 @@ OD10 x ID8 x 150mm (120mm visible) | Ref: CDS-04B, ECO-001
 import FreeCAD as App
 import Part
 import Mesh
-import MeshPart
 import os
 import sys
 
@@ -23,10 +22,23 @@ bore = Part.makeCylinder(P.CARBON_ID / 2, P.CARBON_LENGTH_TOTAL + 2)
 body.Shape = body.Shape.cut(bore)
 
 doc.recompute()
-out = os.path.join(STL_DIR, "calf_tube.stl")
+
+# Export STEP
+step_out = os.path.join(os.path.dirname(STL_DIR), "step", "calf_tube.step")
+Part.export([body.Shape], step_out)
+print(f"[OK] calf_tube.step -> {step_out}")
+
+# Export STL via tessellation (MeshPart.meshFromShape is broken in FreeCAD 1.1.1)
+tess = body.Shape.tessellate(0.05)
+verts = tess[0]
+tris = tess[1]
 mesh = Mesh.Mesh()
-MeshPart.meshFromShape(body.Shape, LinearDeflection=0.05, AngularDeflection=0.05, mesh=mesh)
+for tri in tris:
+    mesh.addFacet(verts[tri[0]], verts[tri[1]], verts[tri[2]])
+
+out = os.path.join(STL_DIR, "calf_tube.stl")
 mesh.write(out)
-_doc_name = doc.Name if hasattr(doc, 'Name') else doc.Label
-App.closeDocument(_doc_name)
-print(f"[OK] calf_tube.stl -> {out}")
+print(f"[OK] calf_tube.stl -> {out} ({mesh.CountFacets} facets, {mesh.CountPoints} points)")
+
+_app_name = doc.Name if hasattr(doc, 'Name') else doc.Label
+App.closeDocument(_app_name)

@@ -9,7 +9,7 @@ Ref: CDS-03A, ECO-003
 import FreeCAD as App
 import Part
 import Mesh
-import MeshPart
+# MeshPart.meshFromShape is broken in FreeCAD 1.1.1; use tessellate
 import os
 import sys
 import math
@@ -86,7 +86,10 @@ body.Shape = body.Shape.cut(tool_hole)
 doc.recompute()
 out = os.path.join(STL_DIR, "hip_roll_base.stl")
 mesh = Mesh.Mesh()
-MeshPart.meshFromShape(body.Shape, LinearDeflection=0.05, AngularDeflection=0.05, mesh=mesh)
+tess = body.Shape.tessellate(0.05)
+mesh = Mesh.Mesh()
+for tri in tess[1]:
+    mesh.addFacet(tess[0][tri[0]], tess[0][tri[1]], tess[0][tri[2]])
 mesh.write(out)
 _doc_name = doc.Name if hasattr(doc, 'Name') else doc.Label
 App.closeDocument(_doc_name)
